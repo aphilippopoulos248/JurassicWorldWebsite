@@ -19,7 +19,10 @@ function LabScene() {
                 <h1 className="title">Tyrannosaurus Rex</h1>
             </div> 
         </div>
-        <MapComponent/>
+        <div className="map-wrapper">
+            <MapComponent/>
+        </div>
+
         </>
     )
 }

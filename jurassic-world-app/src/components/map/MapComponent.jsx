@@ -10,21 +10,32 @@ const fossilSites = [
   { lat: 46.0, lng: -103.5, name: 'Marmarth, North Dakota' },
 ];
 
+const API_STYLE = 'cmawz5373005e01qyhgnw55ks'
 const API_TOKEN = 'pk.eyJ1IjoiYWpheDgxNSIsImEiOiJjbWF3dzFzYXcwajc4MmxxNGJhZjZzdDk1In0.uQZbksofkE1cg0Z4AvRosQ'
 
 const MapComponent = () => (
   <MapContainer 
-  center={[45.0, -105.0]}
-  zoom={5}
-  minZoom={3} // Minimum zoom level (adjust as needed)
-  maxZoom={18} // Maximum zoom level (adjust as needed)
-  style={{ height: '500px', width: '100%' }}
+  center={[40.0, 0.0]}
+  zoom={1}
+  minZoom={1} // Minimum zoom level (adjust as needed)
+  maxZoom={3.5} // Maximum zoom level (adjust as needed)
+  scrollWheelZoom={true} // Enable scroll zoom
+  style={{ height: '500px', width: '100%', borderRadius: '5px' }}
+  options={{
+    scrollWheelZoom: {
+      speed: 0.5, // Adjust this value for scroll speed. Lower values will make scrolling slower
+    },
+  }}
+  maxBounds={[
+    [85, -180], // South-west corner
+    [-85, 180], // North-east corner
+  ]}
   >
     <TileLayer
-      url={`https://api.mapbox.com/styles/v1/ajax815/cmawv56uv012701sd5xooh30p/tiles/256/{z}/{x}/{y}@2x?access_token=${API_TOKEN}`}
+      url={`https://api.mapbox.com/styles/v1/ajax815/${API_STYLE}/tiles/256/{z}/{x}/{y}@2x?access_token=${API_TOKEN}`}
       attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
-      tileSize={512}
-      zoomOffset={-1}
+      tileSize={256}
+      zoomOffset={0}
     />
     {fossilSites.map((site, idx) => (
       <Marker key={idx} position={[site.lat, site.lng]}>
