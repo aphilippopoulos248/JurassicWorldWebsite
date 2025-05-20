@@ -2,12 +2,6 @@ import { useState, useEffect } from 'react'
 import Lab from '../components/lab/Lab'
 
 function LabScene() {
-    const [expanded, setExpanded] = useState(false);
-
-    useEffect(() => {
-        setExpanded(true);
-    }, []);
-
     return (
         <>
         <canvas class="webgl"></canvas>
@@ -19,7 +13,7 @@ function LabScene() {
             </ul>
         </nav> */}
         <Lab/>
-        <div className={`title-container ${expanded ? 'expand' : ''}`}>
+        <div className={'title-container'}>
             <h1 className="title">Tyrannosaurus Rex</h1>
         </div>
         </>

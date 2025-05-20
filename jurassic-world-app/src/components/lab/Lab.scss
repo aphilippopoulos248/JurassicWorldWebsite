@@ -57,15 +57,6 @@ nav ul {
   margin-top: 45rem;
   border: 5px solid #003366;
   border-radius: 3rem;
-  transform: scaleX(0);
-  overflow: hidden;
-  white-space: nowrap;
-  transition: transform .5s ease-out;
-  transition-delay: 1s;
-}
-
-.title-container.expand {
-  transform: scaleX(1);
 }
 
 /* .scene{
