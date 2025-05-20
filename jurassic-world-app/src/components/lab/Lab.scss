@@ -39,10 +39,33 @@ nav ul {
 .title {
   color: white;
   z-index: 2;
-  position: absolute;
   font-size: 3rem;
   left: 50%;
   top: 75%;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(77, 123, 170, 0.8);
+  padding: 50px;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  min-width: 100%;
+  margin-top: 45rem;
+  border: 5px solid #003366;
+  border-radius: 3rem;
+  transform: scaleX(0);
+  overflow: hidden;
+  white-space: nowrap;
+  transition: transform .5s ease-out;
+  transition-delay: 1s;
+}
+
+.title-container.expand {
+  transform: scaleX(1);
 }
 
 /* .scene{

@@ -133,7 +133,7 @@ const Lab = () => {
     // Timeline for animations
     const tl = gsap.timeline({ defaults: { duration: 1 } });
     tl.fromTo('nav', { y: '-100%' }, { y: "0%" });
-    tl.fromTo('.title', { opacity: 0 }, { opacity: 1 });
+    tl.fromTo('.title', { opacity: 0 }, { opacity: 1, delay: 1 });
 
     // Mouse interaction
     let mouseDown = false;
