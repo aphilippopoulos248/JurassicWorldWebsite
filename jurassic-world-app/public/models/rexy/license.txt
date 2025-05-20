@@ -1,0 +1,11 @@
+Model Information:
+* title:	Jurassic World Alive - Rexy
+* source:	https://sketchfab.com/3d-models/jurassic-world-alive-rexy-9dfb653e45e047678863335860911e60
+* author:	Indominus Rex (https://sketchfab.com/lentoneulb)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Jurassic World Alive - Rexy" (https://sketchfab.com/3d-models/jurassic-world-alive-rexy-9dfb653e45e047678863335860911e60) by Indominus Rex (https://sketchfab.com/lentoneulb) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
