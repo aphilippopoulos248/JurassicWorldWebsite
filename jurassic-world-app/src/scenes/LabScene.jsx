@@ -13,8 +13,10 @@ function LabScene() {
             </ul>
         </nav> */}
         <Lab/>
-        <div className={'title-container'}>
-            <h1 className="title">Tyrannosaurus Rex</h1>
+        <div className="ui-container">
+            <div className={'title-container'}>
+                <h1 className="title">Tyrannosaurus Rex</h1>
+            </div> 
         </div>
         </>
     )
