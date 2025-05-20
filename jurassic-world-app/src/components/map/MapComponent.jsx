@@ -16,8 +16,8 @@ const API_TOKEN = 'pk.eyJ1IjoiYWpheDgxNSIsImEiOiJjbWF3dzFzYXcwajc4MmxxNGJhZjZzdD
 const MapComponent = () => (
   <MapContainer 
   center={[40.0, 0.0]}
-  zoom={1}
-  minZoom={1} // Minimum zoom level (adjust as needed)
+  zoom={1.3}
+  minZoom={1.3} // Minimum zoom level (adjust as needed)
   maxZoom={3.5} // Maximum zoom level (adjust as needed)
   scrollWheelZoom={true} // Enable scroll zoom
   style={{ height: '500px', width: '100%', borderRadius: '5px' }}
@@ -30,6 +30,7 @@ const MapComponent = () => (
     [85, -180], // South-west corner
     [-85, 180], // North-east corner
   ]}
+  attributionControl={false}
   >
     <TileLayer
       url={`https://api.mapbox.com/styles/v1/ajax815/${API_STYLE}/tiles/256/{z}/{x}/{y}@2x?access_token=${API_TOKEN}`}
