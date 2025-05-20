@@ -5,7 +5,7 @@ import MapComponent from '../components/map/MapComponent'
 function LabScene() {
     return (
         <>
-        <canvas class="webgl"></canvas>
+        <canvas className="webgl"></canvas>
         {/* <nav>
             <a href="/">Sphere</a>
             <ul>
