@@ -101,7 +101,7 @@ const Lab = () => {
     controls.autoRotate = false;
     controls.autoRotateSpeed = 2;
 
-    controls.minPolarAngle = Math.PI / 3;    // ~60°
+    controls.minPolarAngle = Math.PI / 2.2;    // ~60°
     controls.maxPolarAngle = Math.PI / 2;
 
     // Resize event listener
