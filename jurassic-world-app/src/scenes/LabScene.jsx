@@ -16,7 +16,7 @@ function LabScene() {
     useEffect(() => {
     // Timeline for animations
         const tl = gsap.timeline({ defaults: { duration: 1 } });
-        tl.fromTo('nav', { y: '-100%' }, { y: "0%" });
+        tl.fromTo('.ui-container', { yPercent: 120 }, { yPercent: 0, duration: 0.5, delay: 0.5 });
         tl.fromTo('.title-container', { scaleX: 0 }, { scaleX: 1, transformOrigin: 'center', duration: 0.5, delay: 0, ease: 'power1.out' });
         tl.fromTo('.title', { opacity: 0 }, { opacity: 1, delay: 0.5 });
     }, [])

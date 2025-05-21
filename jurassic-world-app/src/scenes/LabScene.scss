@@ -7,6 +7,7 @@
 body,
 html{
   overflow-x: hidden;
+  overflow-y: hidden;
   font-family: "Poppins", sans-serif;
 }
 
@@ -42,13 +43,14 @@ nav ul {
   align-items: flex-end;
   gap: 4rem;
   justify-content: flex-start; /* Push content to the bottom */
-  min-height: 90vh; /* Full viewport height */
+  min-height: 0vh; /* Full viewport height */
   position: relative;
+  top: 22rem;
+  z-index: 2;
 }
 
 .title {
   color: white;
-  z-index: 2;
   font-size: 3rem;
   left: 50%;
   top: 75%;
@@ -59,7 +61,6 @@ nav ul {
   background-color: rgba(77, 123, 170, 0.8);
   padding: 3rem;
   position: relative;
-  z-index: 2;
   display: inline-block;
   min-width: 100%;
   border: 5px solid #003366;
@@ -70,7 +71,6 @@ nav ul {
     background-color: rgba(77, 123, 170, 0.8);
     padding: 1rem;
     position: relative;
-    z-index: 2;
     display: inline-block;
     border: 5px solid #003366;
     border-radius: 3rem;
