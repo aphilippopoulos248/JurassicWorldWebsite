@@ -20,7 +20,7 @@ const MapComponent = () => (
   minZoom={1.3} // Minimum zoom level (adjust as needed)
   maxZoom={3.5} // Maximum zoom level (adjust as needed)
   scrollWheelZoom={true} // Enable scroll zoom
-  style={{ height: '500px', width: '100%', borderRadius: '5px' }}
+  style={{ height: '500px', width: '100%'}}
   options={{
     scrollWheelZoom: {
       speed: 0.5, // Adjust this value for scroll speed. Lower values will make scrolling slower
