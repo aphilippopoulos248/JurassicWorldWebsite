@@ -38,8 +38,10 @@ nav ul {
 
 .ui-container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* Push content to the bottom */
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 4rem;
+  justify-content: flex-start; /* Push content to the bottom */
   min-height: 90vh; /* Full viewport height */
   position: relative;
 }
@@ -54,8 +56,6 @@ nav ul {
 }
 
 .title-container {
-  display: flex;
-  flex-direction: column;
   background-color: rgba(77, 123, 170, 0.8);
   padding: 3rem;
   position: relative;
@@ -64,6 +64,21 @@ nav ul {
   min-width: 100%;
   border: 5px solid #003366;
   border-radius: 3rem;
+}
+
+.map-button {
+    background-color: rgba(77, 123, 170, 0.8);
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    border: 5px solid #003366;
+    border-radius: 3rem;
+    bottom: 1rem;
+}
+
+.map-button img{
+    width: 5rem;
 }
 
 .map-wrapper {

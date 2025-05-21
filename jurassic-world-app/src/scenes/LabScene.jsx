@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Lab from '../components/lab/Lab'
 import './LabScene.scss'
 import MapComponent from '../components/map/MapComponent'
+import map_icon from '../assets/map-icon.png'
 
 function LabScene() {
     return (
@@ -19,9 +20,9 @@ function LabScene() {
             <div className="title-container">
                 <h1 className="title">Tyrannosaurus Rex</h1>
             </div> 
-            <div className="map-button">
-                Map
-            </div>
+            <button className="map-button">
+                <img src={map_icon} alt="" />
+            </button>
         </div>
         {/* <div className="map-wrapper">
             <MapComponent/>
