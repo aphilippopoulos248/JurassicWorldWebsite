@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Lab from '../components/lab/Lab'
 import './LabScene.scss'
 import MapComponent from '../components/map/MapComponent'
@@ -6,10 +6,11 @@ import map_icon from '../assets/map-icon.png'
 import gsap from 'gsap'
 
 function LabScene() {
-    const [showMap, setShowMap] = useState(false)
+    const [showMap, setShowMap] = useState(false);
+    const mapRef = useRef(null);
 
     const toggleMap = () => {
-        setShowMap(prev => !prev)
+        setShowMap(prev => !prev);
     }
 
     useEffect(() => {
@@ -19,6 +20,20 @@ function LabScene() {
         tl.fromTo('.title-container', { scaleX: 0 }, { scaleX: 1, transformOrigin: 'center', duration: 0.5, delay: 0, ease: 'power1.out' });
         tl.fromTo('.title', { opacity: 0 }, { opacity: 1, delay: 0.5 });
     }, [])
+
+    useEffect(() => {
+        if (showMap && mapRef.current) {
+            gsap.fromTo(mapRef.current,
+                { scaleX: 0 },
+                { scaleX: 1, transformOrigin: 'center', duration: 0.5, ease: 'power1.out' }
+            );
+        }
+        else if (!showMap && mapRef.current) {
+            gsap.to(mapRef.current, 
+                { scaleX: 0, duration: 0.5, ease: 'power1.in' }
+            );
+        }
+    }, [showMap]);
    
 
     return (
@@ -33,8 +48,10 @@ function LabScene() {
         </nav> */}
         <Lab/>
         {showMap && 
-            <div className="map-wrapper">
+            <div className="map-overlay">
+            <div className="map-wrapper" ref={mapRef}>
                 <MapComponent/>
+            </div>
             </div>
         }
         <div className="ui-container">
