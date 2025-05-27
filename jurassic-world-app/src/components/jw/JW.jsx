@@ -58,8 +58,8 @@ const JW = () => {
     // scene.add(directionalLight);
 
     // Create the directional light
-    const directionalLight = new THREE.DirectionalLight(0xffffff, .001);
-    directionalLight.position.set(10, 10, 10); // Start on the left
+    const directionalLight = new THREE.DirectionalLight(0xffffff, .01);
+    directionalLight.position.set(30, 10, 10); // Start on the left
     directionalLight.target.position.set(0, 0, 0);
     scene.add(directionalLight);
     scene.add(directionalLight.target);
@@ -75,18 +75,24 @@ const JW = () => {
         // startTime is used to prevent time from incrementing before function is called
         const t = (time - startTime) * 0.001 * slowFactor;
 
-        directionalLight.position.x = 10 * Math.sin(t * 0.5);
-        directionalLight.target.position.set(0, 0, 0);
-        directionalLight.target.updateMatrixWorld();
+        //directionalLight.position.x = 10 * Math.sin(t * 0.5);
 
         const maxIntensity = 1;
-        const fadeDuration = 5;
+        const fadeDuration = 10;
 
         if (t < fadeDuration) {
+            // Progress from 1 (start) to 0 (end)
+            const progress = 1 - (t / fadeDuration);
+
+
+            directionalLight.position.x = 10 * progress;
             directionalLight.intensity = maxIntensity * (t / fadeDuration);
         } else {
             directionalLight.intensity = maxIntensity;
         }
+
+        directionalLight.target.position.set(0, 0, 0);
+        directionalLight.target.updateMatrixWorld();
 
         requestAnimationFrame(animateLight);
     }
