@@ -4,14 +4,27 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import LabScene from './scenes/LabScene.jsx'
 import OpeningScene from './scenes/OpeningScene.jsx'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      {/* <LabScene/> */}
-      <OpeningScene/>
+      <Router>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <OpeningScene/>
+            </>
+          } />
+          <Route path="/lab" element={
+            <> 
+              <LabScene/>
+            </>
+          } />
+        </Routes>
+      </Router>
     </>
   )
 }

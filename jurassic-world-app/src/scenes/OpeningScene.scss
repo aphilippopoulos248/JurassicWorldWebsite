@@ -1,0 +1,15 @@
+.click-here {
+    color: white;
+    font-size: 3rem;
+    font-family: 'Orbitron', sans-serif;
+    // background-color: rgba(77, 123, 170, 0.8);
+    background: transparent;
+    position: relative;
+    top: 20rem;
+    align-items: center;
+    display: inline-block;
+    min-width: 100%;
+    border: 5px solid #003366;
+    border-radius: 3rem;
+    z-index: 1;
+}

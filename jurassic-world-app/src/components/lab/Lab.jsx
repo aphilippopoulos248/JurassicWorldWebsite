@@ -155,7 +155,7 @@ const Lab = () => {
     const audioLoader = new THREE.AudioLoader();
     const bgMusic = new THREE.Audio(listener);
 
-    audioLoader.load('../music/jurassic-world-bgm.mp3', function (buffer) {
+    audioLoader.load('../music/jurassic-world-bgm2.mp3', function (buffer) {
       bgMusic.setBuffer(buffer);
       bgMusic.setLoop(true);
       bgMusic.setVolume(1);

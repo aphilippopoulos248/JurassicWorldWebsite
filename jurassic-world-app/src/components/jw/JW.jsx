@@ -69,9 +69,12 @@ const JW = () => {
     let startTime = null;
     const slowFactor = 0.2;
 
+    const black = '#000000';
+    const darkGrey = '#222222';
+    const darkBlue = '#152238';
     // Transition between black and background color
-    const bgStartColor = new THREE.Color('#000000');  // black
-    const bgEndColor = new THREE.Color('#152238'); // dark blue
+    const bgStartColor = new THREE.Color(black);  // black
+    const bgEndColor = new THREE.Color(darkGrey); // dark blue
 
     function animateLight(time) {
         if (!animationStarted) return;
