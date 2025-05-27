@@ -48,14 +48,56 @@ const JW = () => {
 
 
     // Light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
-    scene.add(ambientLight);
+    // const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+    // scene.add(ambientLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(0, 10, 10);
+    // const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    // directionalLight.position.set(0, 10, 10);
+    // directionalLight.target.position.set(0, 0, 0);
+    // scene.add(directionalLight.target);
+    // scene.add(directionalLight);
+
+    // Create the directional light
+    const directionalLight = new THREE.DirectionalLight(0xffffff, .001);
+    directionalLight.position.set(10, 10, 10); // Start on the left
     directionalLight.target.position.set(0, 0, 0);
-    scene.add(directionalLight.target);
     scene.add(directionalLight);
+    scene.add(directionalLight.target);
+
+    // Animation function for light
+    let animationStarted = false;
+    let startTime = null;
+    const slowFactor = 0.2;
+
+    function animateLight(time) {
+        if (!animationStarted) return;
+
+        // startTime is used to prevent time from incrementing before function is called
+        const t = (time - startTime) * 0.001 * slowFactor;
+
+        directionalLight.position.x = 10 * Math.sin(t * 0.5);
+        directionalLight.target.position.set(0, 0, 0);
+        directionalLight.target.updateMatrixWorld();
+
+        const maxIntensity = 1;
+        const fadeDuration = 5;
+
+        if (t < fadeDuration) {
+            directionalLight.intensity = maxIntensity * (t / fadeDuration);
+        } else {
+            directionalLight.intensity = maxIntensity;
+        }
+
+        requestAnimationFrame(animateLight);
+    }
+
+    window.addEventListener('click', (event) => {
+        if (!animationStarted) {
+            animationStarted = true;
+            startTime = performance.now();  // <---- Set startTime here on click!
+            requestAnimationFrame(animateLight);
+        }
+    });
 
     // Camera
     const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100);
@@ -70,7 +112,7 @@ const JW = () => {
     });
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(window.devicePixelRatio); // Optimize for high DPI screens
-    renderer.setClearColor('#1e1e1e');
+    renderer.setClearColor('#000000');
     renderer.shadowMap.enabled = true; // Enable shadow map
     renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Soft shadows for better visual quality
     renderer.gammaFactor = 2.2; // Standardize gamma correction
@@ -79,13 +121,14 @@ const JW = () => {
     // Controls
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
-    // controls.enablePan = false;
-    // controls.enableZoom = false;
-    // controls.autoRotate = false;
-    // controls.autoRotateSpeed = 2;
+    controls.enableRotate = false;
+    controls.enablePan = false;
+    controls.enableZoom = false;
+    controls.autoRotate = false;
+    controls.autoRotateSpeed = 2;
 
-    // controls.minPolarAngle = Math.PI / 2.2;    // ~60°
-    // controls.maxPolarAngle = Math.PI / 2;
+    controls.minPolarAngle = Math.PI / 2.2;    // ~60°
+    controls.maxPolarAngle = Math.PI / 2;
 
     // Resize event listener
     window.addEventListener('resize', () => {
