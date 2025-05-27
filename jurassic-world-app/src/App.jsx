@@ -3,13 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import LabScene from './scenes/LabScene.jsx'
+import OpeningScene from './scenes/OpeningScene.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <LabScene/>
+      {/* <LabScene/> */}
+      <OpeningScene/>
     </>
   )
 }
