@@ -146,6 +146,39 @@ const Lab = () => {
         gsap.to(object.material.color, { r: newColor.r, g: newColor.g, b: newColor.b });
       }
     });
+
+    
+    // Play music
+    const listener = new THREE.AudioListener();
+    camera.add(listener);
+
+    const audioLoader = new THREE.AudioLoader();
+    const bgMusic = new THREE.Audio(listener);
+
+    audioLoader.load('../music/jurassic-world-bgm.mp3', function (buffer) {
+      bgMusic.setBuffer(buffer);
+      bgMusic.setLoop(true);
+      bgMusic.setVolume(1);
+
+      // Play music after a user interaction
+      const startAudio = () => {
+        const audioContext = listener.context;
+        
+        if (audioContext.state === 'suspended') {
+          audioContext.resume().then(() => {
+            bgMusic.play();
+          });
+        } else {
+          bgMusic.play();
+        }
+
+        // Only need to run once
+        window.removeEventListener('click', startAudio);
+      };
+
+      // Play music when clicked
+      window.addEventListener('click', startAudio);
+    });
     
     return () => {
         // Clean up resources
