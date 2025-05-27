@@ -85,7 +85,7 @@ const JW = () => {
         //directionalLight.position.x = 10 * Math.sin(t * 0.5);
 
         const maxIntensity = 1;
-        const fadeDuration = 10;
+        const fadeDuration = 5;
 
         if (t < fadeDuration) {
             // Progress from 1 (start) to 0 (end)
@@ -230,6 +230,13 @@ const JW = () => {
         // Clean up resources
         renderer.dispose();
         controls.dispose();
+        if (bgMusic && bgMusic.isPlaying) {
+            bgMusic.stop();
+            console.log('isPlaying:', bgMusic.isPlaying);
+        }
+        else {
+            console.log("no bg music")
+        }
       };
     }, []); // Empty array ensures this effect runs once on mount
 

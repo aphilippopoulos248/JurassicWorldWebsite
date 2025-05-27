@@ -4,7 +4,8 @@ import './index.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // Keep strict mode off when testing
+  // <StrictMode>
     <App />
-  </StrictMode>,
+  // </StrictMode>,
 )
