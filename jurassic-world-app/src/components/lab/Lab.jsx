@@ -159,31 +159,25 @@ const Lab = () => {
       bgMusic.setBuffer(buffer);
       bgMusic.setLoop(true);
       bgMusic.setVolume(1);
+      bgMusic.play();
+    });
 
-      // Play music after a user interaction
-      const startAudio = () => {
-        const audioContext = listener.context;
-        
-        if (audioContext.state === 'suspended') {
-          audioContext.resume().then(() => {
-            bgMusic.play();
-          });
-        } else {
-          bgMusic.play();
-        }
+    // Play sound
+    const roarSound = new THREE.Audio(listener);
 
-        // Only need to run once
-        window.removeEventListener('click', startAudio);
-      };
-
-      // Play music when clicked
-      window.addEventListener('click', startAudio);
+    audioLoader.load('../sounds/trex-roar.mp3', function (buffer) {
+      roarSound.setBuffer(buffer);
+      roarSound.setLoop(false);
+      roarSound.setVolume(0.1);
+      roarSound.play();
     });
     
     return () => {
         // Clean up resources
         renderer.dispose();
         controls.dispose();
+        bgMusic.stop();
+        roarSound.stop();
       };
     }, []); // Empty array ensures this effect runs once on mount
 

@@ -232,10 +232,6 @@ const JW = () => {
         controls.dispose();
         if (bgMusic && bgMusic.isPlaying) {
             bgMusic.stop();
-            console.log('isPlaying:', bgMusic.isPlaying);
-        }
-        else {
-            console.log("no bg music")
         }
       };
     }, []); // Empty array ensures this effect runs once on mount
