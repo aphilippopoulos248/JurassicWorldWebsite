@@ -146,7 +146,6 @@ const Lab = () => {
         gsap.to(object.material.color, { r: newColor.r, g: newColor.g, b: newColor.b });
       }
     });
-
     
     // Play music
     const listener = new THREE.AudioListener();
@@ -155,12 +154,12 @@ const Lab = () => {
     const audioLoader = new THREE.AudioLoader();
     const bgMusic = new THREE.Audio(listener);
 
-    // audioLoader.load('../music/jurassic-world-bgm2.mp3', function (buffer) {
-    //   bgMusic.setBuffer(buffer);
-    //   bgMusic.setLoop(true);
-    //   bgMusic.setVolume(1);
-    //   bgMusic.play();
-    // });
+    audioLoader.load('../music/sci-fi-bgm.mp3', function (buffer) {
+      bgMusic.setBuffer(buffer);
+      bgMusic.setLoop(true);
+      bgMusic.setVolume(0.1);
+      bgMusic.play();
+    });
 
     // Play sound
     const roarSound = new THREE.Audio(listener);
