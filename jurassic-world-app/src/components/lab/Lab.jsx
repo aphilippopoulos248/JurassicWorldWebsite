@@ -165,9 +165,9 @@ const Lab = () => {
     // Play sound
     const roarSound = new THREE.Audio(listener);
 
-    audioLoader.load('../sounds/trex-roar.mp3', function (buffer) {
+    audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {
       roarSound.setBuffer(buffer);
-      roarSound.setLoop(false);
+      roarSound.setLoop(true);
       roarSound.setVolume(0.1);
       roarSound.play();
     });
