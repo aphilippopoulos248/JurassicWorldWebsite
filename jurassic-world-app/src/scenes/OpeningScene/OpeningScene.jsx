@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import JW from '../components/jw/JW'
+import JW from '../../components/jw/JW'
 import './OpeningScene.scss'
 import gsap from 'gsap'
 import { useNavigate } from 'react-router-dom'
@@ -8,7 +8,7 @@ const OpeningScene = () => {
     const navigate = useNavigate();
 
     const navToPage = () => {
-      navigate('/lab');
+      navigate('/menu');
     }
 
     useEffect(() => {

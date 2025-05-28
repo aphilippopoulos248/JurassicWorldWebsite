@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
-import Lab from '../components/lab/Lab'
+import Lab from '../../components/lab/Lab'
 import './LabScene.scss'
-import MapComponent from '../components/map/MapComponent'
-import map_icon from '../assets/map-icon.png'
+import MapComponent from '../../components/map/MapComponent'
+import map_icon from '../../assets/map-icon.png'
 import gsap from 'gsap'
 
 function LabScene() {
