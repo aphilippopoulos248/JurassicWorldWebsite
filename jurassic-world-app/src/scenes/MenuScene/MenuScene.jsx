@@ -1,5 +1,6 @@
 import React from 'react'
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
+import Dinos_Data from '../../data/dinos';
 
 const MenuScene = () => {
     const scene = new THREE.Scene();
@@ -24,9 +25,21 @@ const MenuScene = () => {
         bgMusic.setVolume(1);
         bgMusic.play();
     });
+    
   return (
-    <div>
-      
+    <div className="dinos-container">
+        {Dinos_Data.map((dino, index)=>{
+            return <div className='dinos-format'>
+                <h3>{dino.no}</h3>
+                <h2>{dino.name}</h2>
+                <div className='services-readmore'>
+                    <a href={dino.link}>
+                        <p>Click Here</p>
+                        {/* <img src={arrow_icon} alt="" /> */}
+                    </a>
+                </div>
+            </div>
+        })}
     </div>
   )
 }
