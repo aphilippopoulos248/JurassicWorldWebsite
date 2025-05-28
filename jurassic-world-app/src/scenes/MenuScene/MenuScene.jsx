@@ -23,10 +23,10 @@ const MenuScene = () => {
     const bgMusic = new THREE.Audio(listener);
     const audioLoader = new THREE.AudioLoader();
 
-    audioLoader.load('../music/jurassic-world-bgm2.mp3', function (buffer) {
+    audioLoader.load('../music/sci-fi-bgm-short.mp3', function (buffer) {
         bgMusic.setBuffer(buffer);
         bgMusic.setLoop(true);
-        bgMusic.setVolume(1);
+        bgMusic.setVolume(.2);
         bgMusic.play();
     });
 
