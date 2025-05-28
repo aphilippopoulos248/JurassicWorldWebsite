@@ -24,6 +24,9 @@ function LabScene() {
     }, [])
 
     useEffect(() => {
+        if (roarSound) {
+            roarSound.setVolume(0.1);
+        }
         if (showMap && mapRef.current) {
             gsap.fromTo(mapRef.current,
                 { scaleX: 0 },
@@ -37,9 +40,6 @@ function LabScene() {
             gsap.to(mapRef.current, 
                 { scaleX: 0, duration: 0.5, ease: 'power1.in' }
             );
-            if (roarSound) {
-                roarSound.setVolume(0.1);
-            }
         }
     }, [showMap]);
    
