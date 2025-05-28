@@ -5,6 +5,7 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/l
 import { setBackground } from '../bg/background.js';
 import { loadPlatform } from './platform/platform.js';
 import { useEffect, useRef } from 'react'
+import { initRoarSound } from '../audio/audioManager';
 
 const Lab = () => {
   const canvasRef = useRef(null);
@@ -162,14 +163,15 @@ const Lab = () => {
     });
 
     // Play sound
-    const roarSound = new THREE.Audio(listener);
+    initRoarSound(listener, audioLoader);
+    // const roarSound = new THREE.Audio(listener);
 
-    audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {
-      roarSound.setBuffer(buffer);
-      roarSound.setLoop(true);
-      roarSound.setVolume(0.1);
-      roarSound.play();
-    });
+    // audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {
+    //   roarSound.setBuffer(buffer);
+    //   roarSound.setLoop(true);
+    //   roarSound.setVolume(0.1);
+    //   roarSound.play();
+    // });
     
     return () => {
         // Clean up resources

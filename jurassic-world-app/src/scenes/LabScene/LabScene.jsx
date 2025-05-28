@@ -4,10 +4,12 @@ import './LabScene.scss'
 import MapComponent from '../../components/map/MapComponent'
 import map_icon from '../../assets/map-icon.png'
 import gsap from 'gsap'
+import { getRoarSound } from '../../components/audio/audioManager';
 
 function LabScene() {
     const [showMap, setShowMap] = useState(false);
     const mapRef = useRef(null);
+    const roarSound = getRoarSound();
 
     const toggleMap = () => {
         setShowMap(prev => !prev);
@@ -27,11 +29,17 @@ function LabScene() {
                 { scaleX: 0 },
                 { scaleX: 1, transformOrigin: 'center', duration: 0.5, ease: 'power1.out' }
             );
+            if (roarSound) {
+                roarSound.setVolume(0.01);
+            }
         }
         else if (!showMap && mapRef.current) {
             gsap.to(mapRef.current, 
                 { scaleX: 0, duration: 0.5, ease: 'power1.in' }
             );
+            if (roarSound) {
+                roarSound.setVolume(0.1);
+            }
         }
     }, [showMap]);
    
@@ -39,13 +47,6 @@ function LabScene() {
     return (
         <>
         <canvas className="webgl"></canvas>
-        {/* <nav>
-            <a href="/">Sphere</a>
-            <ul>
-            <li>Explore</li>
-            <li>Create</li>
-            </ul>
-        </nav> */}
         <Lab/>
         {showMap && 
             <div className="map-overlay">
