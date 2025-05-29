@@ -46,18 +46,7 @@ const JW = () => {
       height: window.innerHeight,
     };
 
-
     // Light
-    // const ambientLight = new THREE.AmbientLight(0xffffff, 2);
-    // scene.add(ambientLight);
-
-    // const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    // directionalLight.position.set(0, 10, 10);
-    // directionalLight.target.position.set(0, 0, 0);
-    // scene.add(directionalLight.target);
-    // scene.add(directionalLight);
-
-    // Create the directional light
     const directionalLight = new THREE.DirectionalLight(0xffffff, .01);
     directionalLight.position.set(30, 10, 10); // Start on the left
     directionalLight.target.position.set(0, 0, 0);
@@ -201,7 +190,7 @@ const JW = () => {
     const audioLoader = new THREE.AudioLoader();
     const bgMusic = new THREE.Audio(listener);
 
-    audioLoader.load('../music/jurassic-world-bgm.mp3', function (buffer) {
+    audioLoader.load('../music/jurassic-world-bgm-cut.mp3', function (buffer) {
       bgMusic.setBuffer(buffer);
       bgMusic.setLoop(true);
       bgMusic.setVolume(1);
