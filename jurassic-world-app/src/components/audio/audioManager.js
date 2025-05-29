@@ -3,6 +3,16 @@ import * as THREE from 'three';
 
 let roarSound;
 let aiSound;
+let bgm;
+let listener = null;
+let audioLoader = null;
+
+export const initAudioSystem = () => {
+  if (!listener) listener = new THREE.AudioListener();
+  if (!audioLoader) audioLoader = new THREE.AudioLoader();
+};
+
+export const getListener = () => listener;
 
 export const initRoarSound = (listener, audioLoader) => {
   roarSound = new THREE.Audio(listener);
@@ -26,3 +36,15 @@ export const initAISound = (listener, audioLoader) => {
 };
 
 export const getAISound = () => aiSound;
+
+export const initBGM = () => {
+  bgm = new THREE.Audio(listener);
+  audioLoader.load('../music/sci-fi-bgm-short.mp3', function (buffer) {
+    bgm.setBuffer(buffer);
+    bgm.setLoop(true);
+    bgm.setVolume(0.15);
+    bgm.play();
+  });
+};
+
+export const getBGM = () => bgm;
