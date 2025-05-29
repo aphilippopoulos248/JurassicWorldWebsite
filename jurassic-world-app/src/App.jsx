@@ -6,19 +6,24 @@ import LabScene from './scenes/LabScene/LabScene.jsx'
 import OpeningScene from './scenes/OpeningScene/OpeningScene.jsx'
 import MenuScene from './scenes/MenuScene/MenuScene.jsx'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { initAudioSystem, initBGM } from './components/audio/audioManager.js'
+import { initAudioSystem, initBGM, getBGM } from './components/audio/audioManager.js'
 
 function AppWrapper() {
   const [count, setCount] = useState(0)
   const location = useLocation();
   const [bgmInitialized, setBgmInitialized] = useState(false);
+  const bgm = getBGM();
 
   useEffect(() => {
     initAudioSystem();
 
-    if (location.pathname === '/menu' && !bgmInitialized) {
+    if (location.pathname !== '/' && !bgmInitialized) {
       initBGM();
       setBgmInitialized(true);
+    }
+    if (location.pathname === '/' && bgmInitialized) {
+      bgm.stop();
+      setBgmInitialized(false);
     }
   }, [location, bgmInitialized])
 
