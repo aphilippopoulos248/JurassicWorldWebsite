@@ -2,7 +2,8 @@
 import * as THREE from 'three';
 
 let roarSound;
-let aiSound;
+let aiRexSound;
+let aiIntroSound;
 let bgm;
 let listener = null;
 let audioLoader = null;
@@ -26,16 +27,28 @@ export const initRoarSound = (listener, audioLoader) => {
 
 export const getRoarSound = () => roarSound;
 
-export const initAISound = (listener, audioLoader) => {
-  aiSound = new THREE.Audio(listener);
+export const initAIRex = (listener, audioLoader) => {
+  aiRexSound = new THREE.Audio(listener);
   audioLoader.load('../sounds/ai-voice-rex.mp3', function (buffer) {
-    aiSound.setBuffer(buffer);
-    aiSound.setLoop(false);
-    aiSound.setVolume(.5);
+    aiRexSound.setBuffer(buffer);
+    aiRexSound.setLoop(false);
+    aiRexSound.setVolume(.5);
   });
 };
 
-export const getAISound = () => aiSound;
+export const getAIRex = () => aiRexSound;
+
+export const initAIIntro = () => {
+  aiIntroSound = new THREE.Audio(listener);
+  audioLoader.load('../sounds/intro-voice.mp3', function (buffer) {
+    aiIntroSound.setBuffer(buffer);
+    aiIntroSound.setLoop(false);
+    aiIntroSound.setVolume(.5);
+    aiIntroSound.play();
+  });
+};
+
+export const getAIIntro = () => aiIntroSound;
 
 export const initBGM = () => {
   bgm = new THREE.Audio(listener);

@@ -5,7 +5,7 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/l
 import { setBackground } from '../bg/background.js';
 import { loadPlatform } from './platform/platform.js';
 import { useEffect, useRef } from 'react'
-import { initRoarSound, initAISound } from '../audio/audioManager';
+import { initRoarSound, initAIRex } from '../audio/audioManager';
 
 const Lab = () => {
   const canvasRef = useRef(null);
@@ -97,9 +97,9 @@ const Lab = () => {
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
     controls.enablePan = false;
-    controls.enableZoom = false;
-    controls.autoRotate = false;
-    controls.autoRotateSpeed = 2;
+    controls.enableZoom = true;
+    controls.minDistance = 15;   // Minimum zoom distance
+    controls.maxDistance = 20;
 
     controls.minPolarAngle = Math.PI / 2.2;    // ~60°
     controls.maxPolarAngle = Math.PI / 2;
@@ -164,7 +164,7 @@ const Lab = () => {
 
     // Play sound
     initRoarSound(listener, audioLoader);
-    initAISound(listener, audioLoader);
+    initAIRex(listener, audioLoader);
     // const roarSound = new THREE.Audio(listener);
 
     // audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {

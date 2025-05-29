@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: radial-gradient(ellipse at bottom, #2B3E5A 0%, #121A26 100%);
 }
 
 a {

@@ -5,13 +5,13 @@ import MapComponent from '../../components/map/MapComponent'
 import map_icon from '../../assets/map-icon.png'
 import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
-import { getRoarSound, getAISound } from '../../components/audio/audioManager';
+import { getRoarSound, getAIRex } from '../../components/audio/audioManager';
 
 function LabScene() {
     const [showMap, setShowMap] = useState(false);
     const mapRef = useRef(null);
     const roarSound = getRoarSound();
-    const aiSound = getAISound();
+    const aiSound = getAIRex();
 
     const toggleMap = () => {
         setShowMap(prev => !prev);
