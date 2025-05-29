@@ -37,7 +37,9 @@ function LabScene() {
                 roarSound.setVolume(0.01);
             }
             if (aiSound) {
-                aiSound.play();
+                setTimeout(() => {
+                    aiSound.play();
+                }, 500);
             }
         }
         else if (!showMap && mapRef.current) {
