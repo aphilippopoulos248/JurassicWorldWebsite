@@ -3,6 +3,7 @@ import Lab from '../../components/lab/Lab'
 import './LabScene.scss'
 import MapComponent from '../../components/map/MapComponent'
 import map_icon from '../../assets/map-icon.png'
+import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
 import { getRoarSound, getAISound } from '../../components/audio/audioManager';
 
@@ -14,6 +15,20 @@ function LabScene() {
 
     const toggleMap = () => {
         setShowMap(prev => !prev);
+    }
+
+    const toggleVoice = () => {
+        if (roarSound) {
+            roarSound.setVolume(0.01);
+            setTimeout(() => {
+                roarSound.setVolume(0.1);
+            }, 32000);
+        }
+        if (aiSound) {
+            setTimeout(() => {
+                aiSound.play();
+            }, 500);
+        }
     }
 
     useEffect(() => {
@@ -36,11 +51,6 @@ function LabScene() {
             if (roarSound) {
                 roarSound.setVolume(0.01);
             }
-            if (aiSound) {
-                setTimeout(() => {
-                    aiSound.play();
-                }, 500);
-            }
         }
         else if (!showMap && mapRef.current) {
             gsap.to(mapRef.current, 
@@ -62,6 +72,9 @@ function LabScene() {
             </div>
         }
         <div className="ui-container">
+            <button className="map-button" onClick={toggleVoice}>
+                <img src={sound_icon} alt="" />
+            </button>
             <div className="title-container">
                 <h1 className="title">Tyrannosaurus Rex</h1>
             </div> 

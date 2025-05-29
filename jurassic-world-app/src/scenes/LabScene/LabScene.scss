@@ -47,6 +47,7 @@ nav ul {
   position: relative;
   top: 22rem;
   z-index: 2;
+  width: 100%;
 }
 
 .title {
@@ -62,7 +63,6 @@ nav ul {
   padding: 3rem;
   position: relative;
   display: inline-block;
-  min-width: 100%;
   border: 5px solid #003366;
   border-radius: 3rem;
 }
