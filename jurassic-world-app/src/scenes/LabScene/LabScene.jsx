@@ -24,7 +24,7 @@ function LabScene() {
                 roarSound.setVolume(0.1);
             }, 32000);
         }
-        if (aiSound) {
+        if (aiSound && !showMap) {
             setTimeout(() => {
                 aiSound.play();
             }, 500);
