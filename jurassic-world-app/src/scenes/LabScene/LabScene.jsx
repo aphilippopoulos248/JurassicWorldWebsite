@@ -8,6 +8,7 @@ import gsap from 'gsap'
 import { getRexSounds, getAIRex } from '../../components/audio/audioManager';
 import Dinos_Data from '../../data/dinos'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { dinoCoords } from '../../components/loaders/dinoCoordinates'
 
 function LabScene() {
     const navigate = useNavigate();
@@ -16,10 +17,20 @@ function LabScene() {
     const mapRef = useRef(null);
     const rexSounds = getRexSounds();
     const aiSound = getAIRex();
+    const [fossilSites, setFossilSites] = useState([]);
 
     // Retrieving dino name from menu scene
     const location = useLocation();
     const dinoName = location.state?.dinoName || "Unknown Dino";
+
+    // Retrieving fossil corrdinate data
+    useEffect(() => {
+        const fetchCoords = async () => {
+            const coords = await dinoCoords(dinoName);
+            setFossilSites(coords || []);
+        };
+        fetchCoords();
+    }, [dinoName]);
 
     const toggleMap = () => {
         setShowMap(prev => !prev);
@@ -84,7 +95,7 @@ function LabScene() {
         {showMap && 
             <div className="map-overlay">
             <div className="map-wrapper" ref={mapRef}>
-                <MapComponent/>
+                <MapComponent sites={fossilSites} />
             </div>
             </div>
         }
