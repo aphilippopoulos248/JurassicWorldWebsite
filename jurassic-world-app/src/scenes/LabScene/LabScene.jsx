@@ -7,9 +7,10 @@ import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
 import { getRexSounds, getAIRex } from '../../components/audio/audioManager';
 import Dinos_Data from '../../data/dinos'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function LabScene() {
+    const navigate = useNavigate();
     const [showMap, setShowMap] = useState(false);
     const [playVoice, setPlayVoice] = useState(false);
     const mapRef = useRef(null);
@@ -27,6 +28,10 @@ function LabScene() {
     const toggleVoice = () => {
         setPlayVoice(prev => !prev);
     }
+
+    const goBack = () => {
+        navigate('/menu');
+    };
 
     useEffect(() => {
     // Timeline for animations
@@ -71,7 +76,6 @@ function LabScene() {
             }
         }
     }, [playVoice]);
-   
 
     return (
         <>
