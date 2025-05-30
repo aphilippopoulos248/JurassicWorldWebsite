@@ -5,7 +5,8 @@ import MapComponent from '../../components/map/MapComponent'
 import map_icon from '../../assets/map-icon.png'
 import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
-import { getRexSounds, getAIRex } from '../../components/audio/audioManager';
+import { getRexSounds, getRaptorSounds } from '../../components/audio/audioManager';
+import { loadAIVoice } from '../../components/loaders/loadAIVoice'
 import Dinos_Data from '../../data/dinos'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { dinoCoords } from '../../components/loaders/dinoCoordinates'
@@ -16,12 +17,14 @@ function LabScene() {
     const [playVoice, setPlayVoice] = useState(false);
     const mapRef = useRef(null);
     const rexSounds = getRexSounds();
-    const aiSound = getAIRex();
     const [fossilSites, setFossilSites] = useState([]);
 
     // Retrieving dino name from menu scene
     const location = useLocation();
     const dinoName = location.state?.dinoName || "Unknown Dino";
+
+    // Loading ai voice based on dino name
+    const aiSound = loadAIVoice(dinoName);
 
     // Retrieving fossil corrdinate data
     useEffect(() => {
@@ -83,6 +86,7 @@ function LabScene() {
             if (aiSound && !showMap) {
                 setTimeout(() => {
                     aiSound.play();
+                    console.log('play ai voice');
                 }, 500);
             }
         }

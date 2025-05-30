@@ -1,5 +1,5 @@
-import { loadRex } from '../lab/rex/rex';
-import { loadRaptor } from '../lab/raptor/raptor';
+import { loadRex } from '../lab/dinos/rex/rex';
+import { loadRaptor } from '../lab/dinos/raptor/raptor';
 import { initRexSounds, initRaptorSounds } from '../audio/audioManager';
 
 const DINO_COORDINATES = {

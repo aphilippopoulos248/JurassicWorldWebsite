@@ -1,6 +1,8 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { AnimationMixer } from 'three';
 import * as THREE from 'three';
+import { loadRex } from "./rex/rex.js";
+import { loadRaptor } from "./raptor/raptor.js";
 
 // Rex Loader
 export const loadRex = (loader, scene) => {

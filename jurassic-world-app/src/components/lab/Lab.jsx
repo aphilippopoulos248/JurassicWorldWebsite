@@ -4,8 +4,8 @@ import gsap from 'gsap';
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 import { setBackground } from '../bg/background.js';
 import { loadPlatform } from './platform/platform.js';
-import { loadRex } from "./rex/rex.js";
-import { loadRaptor } from "./raptor/raptor.js";
+import { loadRex } from "./dinos/rex/rex.js";
+import { loadRaptor } from "./dinos/raptor/raptor.js";
 import { loadDino } from "../loaders/loadDino.js";
 import Dinos_Data from '../../data/dinos';
 import { useEffect, useRef } from 'react'
@@ -151,7 +151,7 @@ const Lab = ( {dinoName }) => {
     });
     
     // Play music
-    const bgMusic = new THREE.Audio(listener);
+    // const bgMusic = new THREE.Audio(listener);
 
     // audioLoader.load('../music/sci-fi-bgm-short.mp3', function (buffer) {
     //   bgMusic.setBuffer(buffer);
@@ -161,7 +161,6 @@ const Lab = ( {dinoName }) => {
     // });
 
     // Play sound
-    initAIRex(listener, audioLoader);
     // const roarSound = new THREE.Audio(listener);
 
     // audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {

@@ -3,7 +3,10 @@ import * as THREE from 'three';
 
 let rexSounds;
 let raptorSounds;
+
 let aiRexSound;
+let aiRaptorSound;
+
 let aiIntroSound;
 let bgm;
 let listener = null;
@@ -50,6 +53,17 @@ export const initAIRex = (listener, audioLoader) => {
 };
 
 export const getAIRex = () => aiRexSound;
+
+export const initAIRaptor = (listener, audioLoader) => {
+  aiRaptorSound = new THREE.Audio(listener);
+  audioLoader.load('../sounds/ai-voice-raptor.mp3', function (buffer) {
+    aiRaptorSound.setBuffer(buffer);
+    aiRaptorSound.setLoop(false);
+    aiRaptorSound.setVolume(.5);
+  });
+};
+
+export const getAIRaptor = () => aiRaptorSound;
 
 export const initAIIntro = () => {
   aiIntroSound = new THREE.Audio(listener);
