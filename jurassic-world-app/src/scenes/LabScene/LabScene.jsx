@@ -11,6 +11,7 @@ import { useLocation } from 'react-router-dom';
 
 function LabScene() {
     const [showMap, setShowMap] = useState(false);
+    const [playVoice, setPlayVoice] = useState(false);
     const mapRef = useRef(null);
     const roarSound = getRexSounds();
     const aiSound = getAIRex();
@@ -24,17 +25,7 @@ function LabScene() {
     }
 
     const toggleVoice = () => {
-        if (roarSound) {
-            roarSound.setVolume(0.01);
-            setTimeout(() => {
-                roarSound.setVolume(0.1);
-            }, 32000);
-        }
-        if (aiSound && !showMap) {
-            setTimeout(() => {
-                aiSound.play();
-            }, 500);
-        }
+        setPlayVoice(prev => !prev);
     }
 
     useEffect(() => {
@@ -47,7 +38,7 @@ function LabScene() {
 
     useEffect(() => {
         if (roarSound) {
-            roarSound.setVolume(0.1);
+            roarSound.setVolume(0.2);
         }
         if (showMap && mapRef.current) {
             gsap.fromTo(mapRef.current,
@@ -64,6 +55,22 @@ function LabScene() {
             );
         }
     }, [showMap]);
+
+    useEffect(() => {
+        if (playVoice) {
+           if (roarSound) {
+            roarSound.setVolume(0.01);
+            setTimeout(() => {
+                roarSound.setVolume(0.2);
+            }, 32000);
+            }
+            if (aiSound && !showMap) {
+                setTimeout(() => {
+                    aiSound.play();
+                }, 500);
+            }
+        }
+    }, [playVoice]);
    
 
     return (

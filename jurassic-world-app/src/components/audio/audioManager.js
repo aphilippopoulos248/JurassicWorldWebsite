@@ -21,7 +21,7 @@ export const initRexSounds = (listener, audioLoader) => {
   audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {
     rexSounds.setBuffer(buffer);
     rexSounds.setLoop(true);
-    rexSounds.setVolume(0.1);
+    rexSounds.setVolume(0.2);
     rexSounds.play();
   });
 };
