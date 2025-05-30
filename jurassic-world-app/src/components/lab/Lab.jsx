@@ -91,9 +91,6 @@ const Lab = ( {dinoName }) => {
         if (!loaded) return;
         object = loaded.object;
         mixer = loaded.mixer;
-
-        // You can now load platform here since object is ready
-        loadPlatform(scene, object, loader, 'platform');
       })
       .catch(err => console.error('Error loading dino:', err));
 
@@ -116,8 +113,7 @@ const Lab = ( {dinoName }) => {
     // });
 
     //Load platform
-    // const platformObj = 'platform';
-    // loadPlatform(scene, object, loader, platformObj);
+    loadPlatform(scene, object, loader, 'platform');
 
     // Animation loop
     function animate() {
