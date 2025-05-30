@@ -57,7 +57,8 @@ const Lab = ( {dinoName }) => {
     controls.enableDamping = true;
     controls.enablePan = false;
     controls.enableZoom = true;
-    controls.minDistance = 15;   // Minimum zoom distance
+
+    controls.minDistance = 10;   // Minimum zoom distance
     controls.maxDistance = 20;
 
     controls.minPolarAngle = Math.PI / 2.2;    // ~60°
@@ -92,7 +93,7 @@ const Lab = ( {dinoName }) => {
         mixer = loaded.mixer;
 
         // You can now load platform here since object is ready
-        // loadPlatform(scene, object, loader, 'platform');
+        loadPlatform(scene, object, loader, 'platform');
       })
       .catch(err => console.error('Error loading dino:', err));
 
@@ -115,8 +116,8 @@ const Lab = ( {dinoName }) => {
     // });
 
     //Load platform
-    const platformObj = 'platform';
-    loadPlatform(scene, object, loader, platformObj);
+    // const platformObj = 'platform';
+    // loadPlatform(scene, object, loader, platformObj);
 
     // Animation loop
     function animate() {
