@@ -17,33 +17,7 @@ const Lab = () => {
     const scene = new THREE.Scene();
     setBackground(scene);
 
-    // Keep the 3D object on a global variable so we can access it later
-    let object;
-    let mixer; // Animation mixer
-
-    // Instantiate a loader for the .gltf file
-    const loader = new GLTFLoader();
-    const clock = new THREE.Clock();
-
-    // Load rex
-    // loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
-    //   object = loadedObject;
-    //   mixer = loadedMixer;
-    // }).catch(error => {
-    //   console.error('Failed to load Rex:', error);
-    // });
-
-    loadRaptor(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
-      object = loadedObject;
-      mixer = loadedMixer;
-    }).catch(error => {
-      console.error('Failed to load Rex:', error);
-    });
-
-    //Load platform
-    const platformObj = 'platform';
-    loadPlatform(scene, object, loader, platformObj);
-
+    
     // Sizes
     const sizes = {
       width: window.innerWidth,
@@ -96,6 +70,38 @@ const Lab = () => {
       renderer.setSize(sizes.width, sizes.height);
     });
 
+    // Keep the 3D object on a global variable so we can access it later
+    let object;
+    let mixer; // Animation mixer
+
+    // Instantiate a loader for the .gltf file
+    const loader = new GLTFLoader();
+    const clock = new THREE.Clock();
+
+    const listener = new THREE.AudioListener();
+    camera.add(listener);
+    const audioLoader = new THREE.AudioLoader();
+
+    // Load rex
+    loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
+      object = loadedObject;
+      mixer = loadedMixer;
+      initRoarSound(listener, audioLoader);
+    }).catch(error => {
+      console.error('Failed to load Rex:', error);
+    });
+
+    // loadRaptor(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
+    //   object = loadedObject;
+    //   mixer = loadedMixer;
+    // }).catch(error => {
+    //   console.error('Failed to load Rex:', error);
+    // });
+
+    //Load platform
+    const platformObj = 'platform';
+    loadPlatform(scene, object, loader, platformObj);
+
     // Animation loop
     function animate() {
       requestAnimationFrame(animate);
@@ -132,10 +138,6 @@ const Lab = () => {
     });
     
     // Play music
-    const listener = new THREE.AudioListener();
-    camera.add(listener);
-
-    const audioLoader = new THREE.AudioLoader();
     const bgMusic = new THREE.Audio(listener);
 
     // audioLoader.load('../music/sci-fi-bgm-short.mp3', function (buffer) {
@@ -146,7 +148,6 @@ const Lab = () => {
     // });
 
     // Play sound
-    initRoarSound(listener, audioLoader);
     initAIRex(listener, audioLoader);
     // const roarSound = new THREE.Audio(listener);
 
