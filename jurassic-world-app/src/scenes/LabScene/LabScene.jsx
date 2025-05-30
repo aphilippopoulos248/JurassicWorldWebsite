@@ -13,7 +13,7 @@ function LabScene() {
     const [showMap, setShowMap] = useState(false);
     const [playVoice, setPlayVoice] = useState(false);
     const mapRef = useRef(null);
-    const roarSound = getRexSounds();
+    const rexSounds = getRexSounds();
     const aiSound = getAIRex();
 
     // Retrieving dino name from menu scene
@@ -37,16 +37,16 @@ function LabScene() {
     }, [])
 
     useEffect(() => {
-        if (roarSound) {
-            roarSound.setVolume(0.2);
+        if (rexSounds) {
+            rexSounds.setVolume(0.2);
         }
         if (showMap && mapRef.current) {
             gsap.fromTo(mapRef.current,
                 { scaleX: 0 },
                 { scaleX: 1, transformOrigin: 'center', duration: 0.5, ease: 'power1.out' }
             );
-            if (roarSound) {
-                roarSound.setVolume(0.01);
+            if (rexSounds) {
+                rexSounds.setVolume(0.01);
             }
         }
         else if (!showMap && mapRef.current) {
@@ -58,10 +58,10 @@ function LabScene() {
 
     useEffect(() => {
         if (playVoice) {
-           if (roarSound) {
-            roarSound.setVolume(0.01);
+           if (rexSounds) {
+            rexSounds.setVolume(0.01);
             setTimeout(() => {
-                roarSound.setVolume(0.2);
+                rexSounds.setVolume(0.2);
             }, 32000);
             }
             if (aiSound && !showMap) {
