@@ -7,7 +7,7 @@ import { loadPlatform } from './platform/platform.js';
 import { loadRex } from "./rex/rex.js";
 import { loadRaptor } from "./raptor/raptor.js";
 import { useEffect, useRef } from 'react'
-import { initRoarSound, initAIRex } from '../audio/audioManager';
+import { initRexSounds, initRaptorSounds, initAIRex } from '../audio/audioManager';
 
 const Lab = () => {
   const canvasRef = useRef(null);
@@ -86,14 +86,16 @@ const Lab = () => {
     loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
       object = loadedObject;
       mixer = loadedMixer;
-      initRoarSound(listener, audioLoader);
+      initRexSounds(listener, audioLoader);
     }).catch(error => {
       console.error('Failed to load Rex:', error);
     });
 
+    // Load raptor
     // loadRaptor(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
     //   object = loadedObject;
     //   mixer = loadedMixer;
+    //   initRaptorSounds(listener, audioLoader);
     // }).catch(error => {
     //   console.error('Failed to load Rex:', error);
     // });

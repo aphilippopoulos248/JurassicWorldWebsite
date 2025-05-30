@@ -1,7 +1,8 @@
 // audioManager.js
 import * as THREE from 'three';
 
-let roarSound;
+let rexSounds;
+let raptorSounds;
 let aiRexSound;
 let aiIntroSound;
 let bgm;
@@ -15,17 +16,29 @@ export const initAudioSystem = () => {
 
 export const getListener = () => listener;
 
-export const initRoarSound = (listener, audioLoader) => {
-  roarSound = new THREE.Audio(listener);
+export const initRexSounds = (listener, audioLoader) => {
+  rexSounds = new THREE.Audio(listener);
   audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {
-    roarSound.setBuffer(buffer);
-    roarSound.setLoop(true);
-    roarSound.setVolume(0.1);
-    roarSound.play();
+    rexSounds.setBuffer(buffer);
+    rexSounds.setLoop(true);
+    rexSounds.setVolume(0.1);
+    rexSounds.play();
   });
 };
 
-export const getRoarSound = () => roarSound;
+export const getRexSounds = () => rexSounds;
+
+export const initRaptorSounds = (listener, audioLoader) => {
+  raptorSounds = new THREE.Audio(listener);
+  audioLoader.load('../sounds/raptor-sounds.mp3', function (buffer) {
+    raptorSounds.setBuffer(buffer);
+    raptorSounds.setLoop(true);
+    raptorSounds.setVolume(0.2);
+    raptorSounds.play();
+  });
+};
+
+export const getRaptorSounds = () => raptorSounds;
 
 export const initAIRex = (listener, audioLoader) => {
   aiRexSound = new THREE.Audio(listener);
