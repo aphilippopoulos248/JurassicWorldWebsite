@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 import { setBackground } from '../bg/background.js';
 import { loadPlatform } from './platform/platform.js';
+import { loadRex } from "./rex/rex.js";
 import { useEffect, useRef } from 'react'
 import { initRoarSound, initAIRex } from '../audio/audioManager';
 
@@ -21,41 +22,15 @@ const Lab = () => {
 
     // Instantiate a loader for the .gltf file
     const loader = new GLTFLoader();
-    const objToRender = 'rexy';
     const clock = new THREE.Clock();
 
-    // Load rexy
-    loader.load(
-      `./models/${objToRender}/scene.gltf`,
-      function (gltf) {
-        object = gltf.scene;
-        const dimension = 5;
-        object.scale.set(dimension, dimension, dimension);
-        object.position.set(0, -3, 0);
-        scene.add(object);
-
-        if (gltf.animations && gltf.animations.length) {
-          mixer = new THREE.AnimationMixer(object);
-          const walkAnim = 'Mesh_Trexg3 (merge)_Anim_001_Radar_BWalk';
-          const idleAnim = 'Mesh_Trexg3 (merge)_Anim_001_Raid_Victory_Idle';
-          const clip = THREE.AnimationClip.findByName(gltf.animations, walkAnim);
-          if (clip) {
-            // clip.duration /= 5.15;
-            const action = mixer.clipAction(clip);
-            action.play();
-            // action.setLoop(THREE.LoopRepeat, Infinity);
-            
-          }
-          console.log(gltf.animations);
-        }
-      },
-      function (xhr) {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-      },
-      function (error) {
-        console.error(error);
-      }
-    );
+    // Load rex
+    loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
+      object = loadedObject;
+      mixer = loadedMixer;
+    }).catch(error => {
+      console.error('Failed to load Rex:', error);
+    });
 
     //Load platform
     const platformObj = 'platform';

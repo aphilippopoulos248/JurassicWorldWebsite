@@ -46,7 +46,7 @@ export function loadPlatform(scene, object, loader, objToRender) {
     // scene.add(topLight);
 
     // Ambient light to uniformly light up the scene
-const ambientLight = new THREE.AmbientLight(0xffffff, 1); // (color, intensity)
-scene.add(ambientLight);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1); // (color, intensity)
+    scene.add(ambientLight);
 
 }
