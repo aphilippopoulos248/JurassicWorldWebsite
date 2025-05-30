@@ -6,10 +6,12 @@ import { setBackground } from '../bg/background.js';
 import { loadPlatform } from './platform/platform.js';
 import { loadRex } from "./rex/rex.js";
 import { loadRaptor } from "./raptor/raptor.js";
+import { loadDino } from "../loaders/loadDino.js";
+import Dinos_Data from '../../data/dinos';
 import { useEffect, useRef } from 'react'
 import { initRexSounds, initRaptorSounds, initAIRex } from '../audio/audioManager';
 
-const Lab = () => {
+const Lab = ( {dinoName }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -82,14 +84,26 @@ const Lab = () => {
     camera.add(listener);
     const audioLoader = new THREE.AudioLoader();
 
+     // Load selected model
+    loadDino(dinoName, loader, scene, listener, audioLoader)
+      .then((loaded) => {
+        if (!loaded) return;
+        object = loaded.object;
+        mixer = loaded.mixer;
+
+        // You can now load platform here since object is ready
+        // loadPlatform(scene, object, loader, 'platform');
+      })
+      .catch(err => console.error('Error loading dino:', err));
+
     // Load rex
-    loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
-      object = loadedObject;
-      mixer = loadedMixer;
-      initRexSounds(listener, audioLoader);
-    }).catch(error => {
-      console.error('Failed to load Rex:', error);
-    });
+    // loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
+    //   object = loadedObject;
+    //   mixer = loadedMixer;
+    //   initRexSounds(listener, audioLoader);
+    // }).catch(error => {
+    //   console.error('Failed to load Rex:', error);
+    // });
 
     // Load raptor
     // loadRaptor(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {

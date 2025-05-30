@@ -69,7 +69,7 @@ function LabScene() {
     return (
         <>
         <canvas className="webgl"></canvas>
-        <Lab/>
+        <Lab dinoName={dinoName}/>
         {showMap && 
             <div className="map-overlay">
             <div className="map-wrapper" ref={mapRef}>
