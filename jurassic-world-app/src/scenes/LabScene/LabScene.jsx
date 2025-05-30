@@ -6,12 +6,18 @@ import map_icon from '../../assets/map-icon.png'
 import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
 import { getRexSounds, getAIRex } from '../../components/audio/audioManager';
+import Dinos_Data from '../../data/dinos'
+import { useLocation } from 'react-router-dom';
 
 function LabScene() {
     const [showMap, setShowMap] = useState(false);
     const mapRef = useRef(null);
     const roarSound = getRexSounds();
     const aiSound = getAIRex();
+
+    // Retrieving dino name from menu scene
+    const location = useLocation();
+    const dinoName = location.state?.dinoName || "Unknown Dino";
 
     const toggleMap = () => {
         setShowMap(prev => !prev);
@@ -76,7 +82,7 @@ function LabScene() {
                 <img src={sound_icon} alt="" />
             </button>
             <div className="title-container">
-                <h1 className="title">Tyrannosaurus Rex</h1>
+                <h1 className="title">{dinoName}</h1>
             </div> 
             <button className="map-button" onClick={toggleMap}>
                 <img src={map_icon} alt="" />

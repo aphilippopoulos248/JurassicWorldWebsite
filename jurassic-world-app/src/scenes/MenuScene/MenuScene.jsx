@@ -10,8 +10,8 @@ const MenuScene = () => {
     const navigate = useNavigate();
     const [aiIntroInitialized, setAIIntroInitialized] = useState(false);
 
-    const navToPage = (path) => {
-      navigate(path);
+    const navToPage = (path, name) => {
+       navigate(path, { state: { dinoName: name } });
     }
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const MenuScene = () => {
                         <h3>{dino.no}</h3>
                         <h2>{dino.name}</h2>
                         <div className='services-readmore'>
-                        <button onClick={() => navToPage(`${dino.link}`)}>
+                        <button onClick={() => navToPage(`${dino.link}`, dino.name)}>
                             <p>Click Here</p>
                         </button>
                         </div>
