@@ -5,6 +5,7 @@ import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/l
 import { setBackground } from '../bg/background.js';
 import { loadPlatform } from './platform/platform.js';
 import { loadRex } from "./rex/rex.js";
+import { loadRaptor } from "./raptor/raptor.js";
 import { useEffect, useRef } from 'react'
 import { initRoarSound, initAIRex } from '../audio/audioManager';
 
@@ -25,7 +26,14 @@ const Lab = () => {
     const clock = new THREE.Clock();
 
     // Load rex
-    loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
+    // loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
+    //   object = loadedObject;
+    //   mixer = loadedMixer;
+    // }).catch(error => {
+    //   console.error('Failed to load Rex:', error);
+    // });
+
+    loadRaptor(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
       object = loadedObject;
       mixer = loadedMixer;
     }).catch(error => {
