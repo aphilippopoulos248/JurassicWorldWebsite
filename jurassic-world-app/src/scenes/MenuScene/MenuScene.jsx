@@ -24,7 +24,19 @@ const MenuScene = () => {
             }, 1000);
             setAIIntroInitialized(true);
         }
-    });
+        return () => {
+            const aiIntro = getAIIntro();
+            if (aiIntro) {
+                if (typeof aiIntro.stop === 'function') {
+                    aiIntro.stop();
+                } else if (typeof aiIntro.pause === 'function') {
+                    aiIntro.pause();
+                } else if (typeof aiIntro.currentTime !== 'undefined') {
+                    aiIntro.currentTime = aiIntro.duration; // jump to end
+                }
+            }
+        }
+    }, [aiIntroInitialized]);
 
     return (
         <div className="menu">

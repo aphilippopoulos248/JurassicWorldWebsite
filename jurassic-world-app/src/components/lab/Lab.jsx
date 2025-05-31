@@ -170,13 +170,6 @@ const Lab = ( {dinoName }) => {
     //   roarSound.play();
     // });
     
-    return () => {
-        // Clean up resources
-        renderer.dispose();
-        controls.dispose();
-        bgMusic.stop();
-        roarSound.stop();
-      };
     }, []); // Empty array ensures this effect runs once on mount
 
     if (navigator.gpu) {

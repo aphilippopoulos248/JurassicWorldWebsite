@@ -92,6 +92,23 @@ function LabScene() {
         }
     }, [playVoice]);
 
+    useEffect(() => {
+        return () => {
+            console.log('exiting site');
+            if (rexSounds) {
+            // If there's a stop or pause method, use it:
+            if (typeof rexSounds.stop === 'function') {
+                rexSounds.stop();
+            } else if (typeof rexSounds.pause === 'function') {
+                rexSounds.pause();
+            } else {
+                // fallback, set volume to 0
+                rexSounds.setVolume(0);
+            }
+            }
+        };
+    }, [rexSounds]);
+
     return (
         <>
         <canvas className="webgl"></canvas>
