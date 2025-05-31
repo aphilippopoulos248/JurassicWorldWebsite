@@ -93,6 +93,12 @@ export const initBGM = () => {
 
 export const getBGM = () => bgm;
 
+export const getActiveDinoSound = () => {
+  if (rexSounds?.isPlaying) return rexSounds;
+  if (raptorSounds?.isPlaying) return raptorSounds;
+  return null;
+};
+
 export const stopDinoSounds = () => {
     if (rexSounds?.stop) rexSounds.stop();
     if (raptorSounds?.stop) raptorSounds.stop();

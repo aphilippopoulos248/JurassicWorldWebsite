@@ -8,7 +8,8 @@ import gsap from 'gsap'
 import { 
     getRexSounds,
     stopDinoSounds,
-    getRaptorSounds 
+    getRaptorSounds,
+    getActiveDinoSound
     } from '../../components/audio/audioManager';
 import { loadAIVoice } from '../../components/loaders/loadAIVoice'
 import Dinos_Data from '../../data/dinos'
@@ -20,7 +21,7 @@ function LabScene() {
     const [showMap, setShowMap] = useState(false);
     const [playVoice, setPlayVoice] = useState(false);
     const mapRef = useRef(null);
-    const rexSounds = getRexSounds();
+    const activeDinoSounds = getActiveDinoSound();
     const [fossilSites, setFossilSites] = useState([]);
 
     // Retrieving dino name from menu scene
@@ -60,16 +61,16 @@ function LabScene() {
     }, [])
 
     useEffect(() => {
-        if (rexSounds) {
-            rexSounds.setVolume(0.2);
+        if (activeDinoSounds) {
+            activeDinoSounds.setVolume(0.2);
         }
         if (showMap && mapRef.current) {
             gsap.fromTo(mapRef.current,
                 { scaleX: 0 },
                 { scaleX: 1, transformOrigin: 'center', duration: 0.5, ease: 'power1.out' }
             );
-            if (rexSounds) {
-                rexSounds.setVolume(0.01);
+            if (activeDinoSounds) {
+                activeDinoSounds.setVolume(0.01);
             }
         }
         else if (!showMap && mapRef.current) {
@@ -81,10 +82,10 @@ function LabScene() {
 
     useEffect(() => {
         if (playVoice) {
-            if (rexSounds) {
-                rexSounds.setVolume(0.01);
+            if (activeDinoSounds) {
+                activeDinoSounds.setVolume(0.01);
                 setTimeout(() => {
-                    rexSounds.setVolume(0.2);
+                    activeDinoSounds.setVolume(0.2);
                 }, 32000);
             }
             if (aiSound && !showMap) {
