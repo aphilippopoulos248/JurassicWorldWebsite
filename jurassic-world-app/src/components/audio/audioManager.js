@@ -19,6 +19,7 @@ export const initAudioSystem = () => {
 
 export const getListener = () => listener;
 
+// Dino sounds
 export const initRexSounds = (listener, audioLoader) => {
   rexSounds = new THREE.Audio(listener);
   audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {
@@ -30,6 +31,10 @@ export const initRexSounds = (listener, audioLoader) => {
 };
 
 export const getRexSounds = () => rexSounds;
+
+export const stopRexSounds = () => {
+    if (rexSounds?.stop) rexSounds.stop();
+}
 
 export const initRaptorSounds = (listener, audioLoader) => {
   raptorSounds = new THREE.Audio(listener);
@@ -52,6 +57,7 @@ export const initAIRex = (listener, audioLoader) => {
   });
 };
 
+// AI voice sounds
 export const getAIRex = () => aiRexSound;
 
 export const initAIRaptor = (listener, audioLoader) => {
@@ -76,6 +82,8 @@ export const initAIIntro = () => {
 };
 
 export const getAIIntro = () => aiIntroSound;
+
+// Background Music
 
 export const initBGM = () => {
   bgm = new THREE.Audio(listener);

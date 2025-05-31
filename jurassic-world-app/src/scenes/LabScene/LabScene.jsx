@@ -5,7 +5,11 @@ import MapComponent from '../../components/map/MapComponent'
 import map_icon from '../../assets/map-icon.png'
 import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
-import { getRexSounds, getRaptorSounds } from '../../components/audio/audioManager';
+import { 
+    getRexSounds,
+    stopRexSounds,
+    getRaptorSounds 
+    } from '../../components/audio/audioManager';
 import { loadAIVoice } from '../../components/loaders/loadAIVoice'
 import Dinos_Data from '../../data/dinos'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -77,11 +81,11 @@ function LabScene() {
 
     useEffect(() => {
         if (playVoice) {
-           if (rexSounds) {
-            rexSounds.setVolume(0.01);
-            setTimeout(() => {
-                rexSounds.setVolume(0.2);
-            }, 32000);
+            if (rexSounds) {
+                rexSounds.setVolume(0.01);
+                setTimeout(() => {
+                    rexSounds.setVolume(0.2);
+                }, 32000);
             }
             if (aiSound && !showMap) {
                 setTimeout(() => {
@@ -95,18 +99,8 @@ function LabScene() {
     useEffect(() => {
         return () => {
             console.log('exiting site');
-            if (rexSounds) {
-            // If there's a stop or pause method, use it:
-            if (typeof rexSounds.stop === 'function') {
-                rexSounds.stop();
-            } else if (typeof rexSounds.pause === 'function') {
-                rexSounds.pause();
-            } else {
-                // fallback, set volume to 0
-                rexSounds.setVolume(0);
+                stopRexSounds();
             }
-            }
-        };
     }, [rexSounds]);
 
     return (
