@@ -35,13 +35,19 @@
 .menu-format{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    gap: 13rem;
     min-width: 22rem;
     border-radius: 10px;
-    transition: 0.4s;
     cursor: pointer;
     background-color: rgba(77, 123, 170, 0.8);
     border: 5px solid #003366;
     border-radius: 3rem;
+    transform: scaleY(0);
+}
+
+.menu-format h3{
+    position: relative;
+    right: 7rem;
 }

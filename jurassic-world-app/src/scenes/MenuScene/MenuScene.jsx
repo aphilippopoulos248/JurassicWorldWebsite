@@ -5,6 +5,7 @@ import './MenuScene.scss';
 import { initAudioSystem,initBGM } from '../../components/audio/audioManager'
 import { useNavigate } from 'react-router-dom';
 import { initAIIntro, getAIIntro } from '../../components/audio/audioManager';
+import gsap from 'gsap';
 
 const MenuScene = () => {
     const navigate = useNavigate();
@@ -13,6 +14,12 @@ const MenuScene = () => {
     const navToPage = (path, name) => {
        navigate(path, { state: { dinoName: name } });
     }
+
+    useEffect(() => {
+        const tl = gsap.timeline({ defaults: { duration: 1 } });
+        tl.fromTo('.menu-format', { scaleY: 0 }, { scaleY: 1, duration: .5, delay: .2, ease: 'power1.out', stagger: 0.2 });
+        // tl.fromTo('.enter p', { opacity: 0 }, { opacity: 0.8, duration: 5, delay: 0.5 });
+    }, []);
 
     useEffect(() => {
         // Play ai voice
@@ -39,7 +46,7 @@ const MenuScene = () => {
                 }
             }
         }
-    }, []);
+        }, []);
 
     return (
         <div className="menu">
