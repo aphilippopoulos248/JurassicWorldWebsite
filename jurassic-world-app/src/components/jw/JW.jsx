@@ -59,7 +59,7 @@ const JW = () => {
     const slowFactor = 0.2;
 
     const black = '#000000';
-    const darkGrey = '#222222';
+    const darkGrey = '#111111';
     const darkBlue = '#152238';
     // Transition between black and background color
     const bgStartColor = new THREE.Color(black);  // black
@@ -74,7 +74,7 @@ const JW = () => {
         //directionalLight.position.x = 10 * Math.sin(t * 0.5);
 
         const maxIntensity = 1;
-        const fadeDuration = 5;
+        const fadeDuration = 4;
 
         if (t < fadeDuration) {
             // Progress from 1 (start) to 0 (end)
@@ -86,7 +86,7 @@ const JW = () => {
             const bgColor = new THREE.Color();
 
             // lerping between the two colors
-            bgColor.lerpColors(bgStartColor, bgEndColor, t / fadeDuration);
+            bgColor.lerpColors(bgStartColor, bgEndColor, t / (fadeDuration * 5));
             renderer.setClearColor(bgColor);
         } else {
             directionalLight.position.x = 0;
