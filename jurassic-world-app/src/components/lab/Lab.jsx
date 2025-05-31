@@ -95,25 +95,7 @@ const Lab = ( {dinoName }) => {
         mixer = loaded.mixer;
       })
       .catch(err => console.error('Error loading dino:', err));
-
-    // Load rex
-    // loadRex(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
-    //   object = loadedObject;
-    //   mixer = loadedMixer;
-    //   initRexSounds(listener, audioLoader);
-    // }).catch(error => {
-    //   console.error('Failed to load Rex:', error);
-    // });
-
-    // Load raptor
-    // loadRaptor(loader, scene).then(({ object: loadedObject, mixer: loadedMixer }) => {
-    //   object = loadedObject;
-    //   mixer = loadedMixer;
-    //   initRaptorSounds(listener, audioLoader);
-    // }).catch(error => {
-    //   console.error('Failed to load Rex:', error);
-    // });
-
+      
     //Load platform
     loadPlatform(scene, object, loader, 'platform');
 
@@ -135,48 +117,11 @@ const Lab = ( {dinoName }) => {
     // Perform the animation loop
     animate();
 
-    // // Mouse interaction
-    // let mouseDown = false;
-    // let rgb = [];
-    // window.addEventListener('mousedown', () => (mouseDown = true));
-    // window.addEventListener('mouseup', () => (mouseDown = false));
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', handleResize);
+    };
 
-    // window.addEventListener('mousemove', (e) => {
-    //   if (mouseDown) {
-    //     rgb = [
-    //       Math.round((e.pageX / sizes.width) * 255),
-    //       Math.round((e.pageY / sizes.height) * 255),
-    //       150,
-    //     ];
-    //     let newColor = new THREE.Color(`rgb(${rgb.join(",")})`);
-    //     gsap.to(object.material.color, { r: newColor.r, g: newColor.g, b: newColor.b });
-    //   }
-    // });
-    
-    // Play music
-    // const bgMusic = new THREE.Audio(listener);
-
-    // audioLoader.load('../music/sci-fi-bgm-short.mp3', function (buffer) {
-    //   bgMusic.setBuffer(buffer);
-    //   bgMusic.setLoop(true);
-    //   bgMusic.setVolume(0.1);
-    //   bgMusic.play();
-    // });
-
-    // Play sound
-    // const roarSound = new THREE.Audio(listener);
-
-    // audioLoader.load('../sounds/rex-sounds.mp3', function (buffer) {
-    //   roarSound.setBuffer(buffer);
-    //   roarSound.setLoop(true);
-    //   roarSound.setVolume(0.1);
-    //   roarSound.play();
-    // });
-      return () => {
-        cancelAnimationFrame(animationFrameId);
-        window.removeEventListener('resize', handleResize);
-      };
-    
     }, []); // Empty array ensures this effect runs once on mount
 
     if (navigator.gpu) {
