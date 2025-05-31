@@ -7,7 +7,7 @@ import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
 import { 
     getRexSounds,
-    stopRexSounds,
+    stopDinoSounds,
     getRaptorSounds 
     } from '../../components/audio/audioManager';
 import { loadAIVoice } from '../../components/loaders/loadAIVoice'
@@ -99,9 +99,9 @@ function LabScene() {
     useEffect(() => {
         return () => {
             console.log('exiting site');
-                stopRexSounds();
+            stopDinoSounds();
             }
-    }, [rexSounds]);
+    }, []);
 
     return (
         <>

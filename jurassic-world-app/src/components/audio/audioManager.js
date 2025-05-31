@@ -32,10 +32,6 @@ export const initRexSounds = (listener, audioLoader) => {
 
 export const getRexSounds = () => rexSounds;
 
-export const stopRexSounds = () => {
-    if (rexSounds?.stop) rexSounds.stop();
-}
-
 export const initRaptorSounds = (listener, audioLoader) => {
   raptorSounds = new THREE.Audio(listener);
   audioLoader.load('../sounds/raptor-sounds.mp3', function (buffer) {
@@ -96,3 +92,8 @@ export const initBGM = () => {
 };
 
 export const getBGM = () => bgm;
+
+export const stopDinoSounds = () => {
+    if (rexSounds?.stop) rexSounds.stop();
+    if (raptorSounds?.stop) raptorSounds.stop();
+}
