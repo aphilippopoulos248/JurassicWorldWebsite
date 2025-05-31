@@ -17,6 +17,11 @@ const Dinos_Data = [
         name:"Triceratops",
         link:"/lab",
     },
+        {
+        no:"04",
+        name:"Stegosaurus",
+        link:"/lab",
+    },
 ]
  
 export default Dinos_Data;
