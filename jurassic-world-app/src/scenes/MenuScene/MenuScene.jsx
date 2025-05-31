@@ -17,12 +17,15 @@ const MenuScene = () => {
     useEffect(() => {
         // Play ai voice
         initAudioSystem();
-        if (!aiIntroInitialized)
+
+        const aiIntroAlreadyPlayed = localStorage.getItem('aiIntroPlayed') === 'true';
+
+        if (!aiIntroAlreadyPlayed)
         {
             setTimeout(() => {
                 initAIIntro();
             }, 1000);
-            setAIIntroInitialized(true);
+            localStorage.setItem('aiIntroPlayed', 'true');
         }
         return () => {
             const aiIntro = getAIIntro();
@@ -36,7 +39,7 @@ const MenuScene = () => {
                 }
             }
         }
-    }, [aiIntroInitialized]);
+    }, []);
 
     return (
         <div className="menu">

@@ -16,6 +16,13 @@ function AppWrapper() {
 
   useEffect(() => {
     initAudioSystem();
+    if (localStorage.getItem('aiIntroPlayed') === 'true') {
+      localStorage.setItem('aiIntroPlayed', 'false');
+    }
+  }, []);
+
+  useEffect(() => {
+    initAudioSystem();
 
     if (location.pathname !== '/' && !bgmInitialized) {
       initBGM();
