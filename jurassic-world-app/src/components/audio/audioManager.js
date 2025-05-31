@@ -103,3 +103,8 @@ export const stopDinoSounds = () => {
     if (rexSounds?.stop) rexSounds.stop();
     if (raptorSounds?.stop) raptorSounds.stop();
 }
+
+export const stopAISounds = () => {
+    if (aiRexSound?.stop) aiRexSound.stop();
+    if (aiRaptorSound?.stop) aiRaptorSound.stop();
+}

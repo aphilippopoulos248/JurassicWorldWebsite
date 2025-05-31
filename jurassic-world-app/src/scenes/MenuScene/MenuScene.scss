@@ -16,6 +16,7 @@
 .menu-container{
     display: flex;
     flex-direction: row;
+    font-family: 'Orbitron', sans-serif;
     gap: 4rem;
     overflow-x: auto;
     white-space: nowrap;
@@ -36,7 +37,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
-    min-width: 20rem;
+    min-width: 22rem;
     border-radius: 10px;
     transition: 0.4s;
     cursor: pointer;

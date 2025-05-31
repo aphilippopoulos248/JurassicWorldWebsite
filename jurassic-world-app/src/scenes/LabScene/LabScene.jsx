@@ -6,10 +6,9 @@ import map_icon from '../../assets/map-icon.png'
 import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
 import { 
-    getRexSounds,
     stopDinoSounds,
-    getRaptorSounds,
-    getActiveDinoSound
+    stopAISounds,
+    getActiveDinoSound,
     } from '../../components/audio/audioManager';
 import { loadAIVoice } from '../../components/loaders/loadAIVoice'
 import Dinos_Data from '../../data/dinos'
@@ -101,6 +100,7 @@ function LabScene() {
         return () => {
             console.log('exiting site');
             stopDinoSounds();
+            stopAISounds();
             }
     }, []);
 
