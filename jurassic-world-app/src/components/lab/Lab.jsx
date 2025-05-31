@@ -64,14 +64,16 @@ const Lab = ( {dinoName }) => {
     controls.minPolarAngle = Math.PI / 2.2;    // ~60°
     controls.maxPolarAngle = Math.PI / 2;
 
-    // Resize event listener
-    window.addEventListener('resize', () => {
+    function handleResize() {
       sizes.width = window.innerWidth;
       sizes.height = window.innerHeight;
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
       renderer.setSize(sizes.width, sizes.height);
-    });
+    }
+
+    // Resize event listener
+    window.addEventListener('resize', handleResize);
 
     // Keep the 3D object on a global variable so we can access it later
     let object;
@@ -116,8 +118,9 @@ const Lab = ( {dinoName }) => {
     loadPlatform(scene, object, loader, 'platform');
 
     // Animation loop
+    let animationFrameId;
     function animate() {
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
 
       const delta = clock.getDelta();
 
@@ -132,23 +135,23 @@ const Lab = ( {dinoName }) => {
     // Perform the animation loop
     animate();
 
-    // Mouse interaction
-    let mouseDown = false;
-    let rgb = [];
-    window.addEventListener('mousedown', () => (mouseDown = true));
-    window.addEventListener('mouseup', () => (mouseDown = false));
+    // // Mouse interaction
+    // let mouseDown = false;
+    // let rgb = [];
+    // window.addEventListener('mousedown', () => (mouseDown = true));
+    // window.addEventListener('mouseup', () => (mouseDown = false));
 
-    window.addEventListener('mousemove', (e) => {
-      if (mouseDown) {
-        rgb = [
-          Math.round((e.pageX / sizes.width) * 255),
-          Math.round((e.pageY / sizes.height) * 255),
-          150,
-        ];
-        let newColor = new THREE.Color(`rgb(${rgb.join(",")})`);
-        gsap.to(object.material.color, { r: newColor.r, g: newColor.g, b: newColor.b });
-      }
-    });
+    // window.addEventListener('mousemove', (e) => {
+    //   if (mouseDown) {
+    //     rgb = [
+    //       Math.round((e.pageX / sizes.width) * 255),
+    //       Math.round((e.pageY / sizes.height) * 255),
+    //       150,
+    //     ];
+    //     let newColor = new THREE.Color(`rgb(${rgb.join(",")})`);
+    //     gsap.to(object.material.color, { r: newColor.r, g: newColor.g, b: newColor.b });
+    //   }
+    // });
     
     // Play music
     // const bgMusic = new THREE.Audio(listener);
@@ -169,6 +172,10 @@ const Lab = ( {dinoName }) => {
     //   roarSound.setVolume(0.1);
     //   roarSound.play();
     // });
+      return () => {
+        cancelAnimationFrame(animationFrameId);
+        window.removeEventListener('resize', handleResize);
+      };
     
     }, []); // Empty array ensures this effect runs once on mount
 
