@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.129.0';
+import * as THREE from 'three';
 
 /**
  * Set a background to the scene
