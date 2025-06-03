@@ -125,13 +125,13 @@ function LabScene() {
             <img src={arrow_icon} alt="" />
         </button>
         <div className="ui-container">
-            <button className="map-button" onClick={toggleVoice}>
+            <button id="ai-button" className="ui-button" onClick={toggleVoice}>
                 <img src={sound_icon} alt="" />
             </button>
             <div className="title-container">
                 <h1 className="title">{dinoName}</h1>
             </div> 
-            <button className="map-button" onClick={toggleMap}>
+            <button  id="map-button" className="ui-button" onClick={toggleMap}>
                 <img src={map_icon} alt="" />
             </button>
         </div>
