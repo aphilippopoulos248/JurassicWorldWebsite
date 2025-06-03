@@ -30,9 +30,6 @@ export const initRexSounds = (listener, audioLoader) => {
     rexSounds.play();
   });
 };
-
-export const getRexSounds = () => rexSounds;
-
 export const initRaptorSounds = (listener, audioLoader) => {
   raptorSounds = new THREE.Audio(listener);
   audioLoader.load('../sounds/raptor-sounds.mp3', function (buffer) {
@@ -42,9 +39,6 @@ export const initRaptorSounds = (listener, audioLoader) => {
     raptorSounds.play();
   });
 };
-
-export const getRaptorSounds = () => raptorSounds;
-
 export const initTriceratopsSounds = (listener, audioLoader) => {
   triceratopsSounds = new THREE.Audio(listener);
   audioLoader.load('../sounds/triceratops-sounds.mp3', function (buffer) {
@@ -55,32 +49,11 @@ export const initTriceratopsSounds = (listener, audioLoader) => {
   });
 };
 
+export const getRexSounds = () => rexSounds;
+export const getRaptorSounds = () => raptorSounds;
 export const getTriceratopsSounds = () => triceratopsSounds;
 
 // AI voice sounds
-
-export const initAIRex = (listener, audioLoader) => {
-  aiRexSound = new THREE.Audio(listener);
-  audioLoader.load('../sounds/ai-voice-rex.mp3', function (buffer) {
-    aiRexSound.setBuffer(buffer);
-    aiRexSound.setLoop(false);
-    aiRexSound.setVolume(.5);
-  });
-};
-
-export const getAIRex = () => aiRexSound;
-
-export const initAIRaptor = (listener, audioLoader) => {
-  aiRaptorSound = new THREE.Audio(listener);
-  audioLoader.load('../sounds/ai-voice-raptor.mp3', function (buffer) {
-    aiRaptorSound.setBuffer(buffer);
-    aiRaptorSound.setLoop(false);
-    aiRaptorSound.setVolume(.5);
-  });
-};
-
-export const getAIRaptor = () => aiRaptorSound;
-
 export const initAIIntro = () => {
   aiIntroSound = new THREE.Audio(listener);
   audioLoader.load('../sounds/intro-voice.mp3', function (buffer) {
@@ -90,8 +63,26 @@ export const initAIIntro = () => {
     aiIntroSound.play();
   });
 };
+export const initAIRex = (listener, audioLoader) => {
+  aiRexSound = new THREE.Audio(listener);
+  audioLoader.load('../sounds/ai-voice-rex.mp3', function (buffer) {
+    aiRexSound.setBuffer(buffer);
+    aiRexSound.setLoop(false);
+    aiRexSound.setVolume(.5);
+  });
+};
+export const initAIRaptor = (listener, audioLoader) => {
+  aiRaptorSound = new THREE.Audio(listener);
+  audioLoader.load('../sounds/ai-voice-raptor.mp3', function (buffer) {
+    aiRaptorSound.setBuffer(buffer);
+    aiRaptorSound.setLoop(false);
+    aiRaptorSound.setVolume(.5);
+  });
+};
 
 export const getAIIntro = () => aiIntroSound;
+export const getAIRex = () => aiRexSound;
+export const getAIRaptor = () => aiRaptorSound;
 
 // Background Music
 
