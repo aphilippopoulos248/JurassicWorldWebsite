@@ -21,14 +21,21 @@ const JW = () => {
     const objToRender = 'jw_logo';
     const clock = new THREE.Clock();
 
-    // Load rexy
+    // Setting variables base on screen width
+    let dimension = 0.03;
+    let posY = -5;
+    if (window.innerWidth <= 768) {
+      dimension = 0.02;
+      posY = -1.5;
+    }
+
+    // Load jw logo
     loader.load(
       `./models/${objToRender}/scene.gltf`,
       function (gltf) {
         object = gltf.scene;
-        const dimension = .03;
         object.scale.set(dimension, dimension, dimension);
-        object.position.set(0, -5, 0);
+        object.position.set(0, posY, 0);
         scene.add(object);
         console.log(gltf.scene);
       },
@@ -232,7 +239,7 @@ const JW = () => {
     }
 
   return (
-    <div>
+    <div className="jw-canvas-wrapper">
       <canvas className="webgl"></canvas>
     </div>
   );

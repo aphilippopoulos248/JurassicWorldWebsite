@@ -20,3 +20,10 @@
     font-size: 3rem;
     font-family: 'Orbitron', sans-serif;
 }
+
+@media(max-width: 48rem){
+    .enter{
+        top: 10rem;
+        padding: 1rem 2rem;
+    }
+}
