@@ -62,22 +62,25 @@ function LabScene() {
     }, [])
 
     useEffect(() => {
-        if (activeDinoSounds) {
-            activeDinoSounds.setVolume(0.2);
-        }
-        if (showMap && mapRef.current) {
+        if (!activeDinoSounds) {return};
+        // if (!mapRef.current) {return};
+        if (showMap) {
+            console.log('showing map')
             gsap.fromTo(mapRef.current,
                 { scaleX: 0 },
                 { scaleX: 1, transformOrigin: 'center', duration: 0.5, ease: 'power1.out' }
             );
-            if (activeDinoSounds) {
-                activeDinoSounds.setVolume(0.01);
-            }
+            activeDinoSounds.setVolume(0.01);
         }
-        else if (!showMap && mapRef.current) {
-            gsap.to(mapRef.current, 
-                { scaleX: 0, duration: 0.5, ease: 'power1.in' }
-            );
+        else if (!showMap) {
+            console.log('not showing map')
+            // gsap.to(mapRef.current, 
+            //     { scaleX: 0, duration: 0.5, ease: 'power1.in' }
+            // );
+            if (aiSound && !aiSound.isPlaying)     
+            {
+                activeDinoSounds.setVolume(0.2);
+            }   
         }
     }, [showMap]);
 
