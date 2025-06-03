@@ -37,6 +37,23 @@ nav ul {
   gap: 4rem;
 }
 
+.go-back-button {
+  display: flex;
+  gap: 4rem;
+  position: relative;
+  z-index: 2;
+  background-color: rgba(77, 123, 170, 0.8);
+  border: 5px solid #003366;
+  border-radius: 3rem;
+  padding: 1rem 2rem;
+}
+
+.go-back-button img{
+  transform: rotateY(180deg);
+  width: 5rem;
+  height: 5rem;
+}
+
 .ui-container {
   display: flex;
   flex-direction: row;

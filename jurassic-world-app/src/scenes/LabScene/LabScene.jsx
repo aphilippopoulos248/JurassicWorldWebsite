@@ -3,6 +3,7 @@ import Lab from '../../components/lab/Lab'
 import './LabScene.scss'
 import MapComponent from '../../components/map/MapComponent'
 import map_icon from '../../assets/map-icon.png'
+import arrow_icon from '../../assets/arrow-icon.svg'
 import sound_icon from '../../assets/sound-icon.png'
 import gsap from 'gsap'
 import { 
@@ -119,6 +120,9 @@ function LabScene() {
             </div>
             </div>
         }
+        <button className="go-back-button" onClick={goBack}>
+            <img src={arrow_icon} alt="" />
+        </button>
         <div className="ui-container">
             <button className="map-button" onClick={toggleVoice}>
                 <img src={sound_icon} alt="" />
@@ -130,7 +134,6 @@ function LabScene() {
                 <img src={map_icon} alt="" />
             </button>
         </div>
-
         </>
     )
 }
