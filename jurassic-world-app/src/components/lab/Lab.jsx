@@ -29,7 +29,7 @@ const Lab = ( {dinoName }) => {
     const topLight = new THREE.DirectionalLight(0xffffff, 1);
     topLight.position.set(0, 500, 0);
     topLight.castShadow = true;
-    topLight.intensity = 3;
+    topLight.intensity = 5;
     scene.add(topLight);
 
     // Camera

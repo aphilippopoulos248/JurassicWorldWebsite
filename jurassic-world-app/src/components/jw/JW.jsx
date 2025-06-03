@@ -74,7 +74,7 @@ const JW = () => {
         //directionalLight.position.x = 10 * Math.sin(t * 0.5);
 
         const maxIntensity = 1;
-        const fadeDuration = 4;
+        const fadeDuration = 3;
 
         if (t < fadeDuration) {
             // Progress from 1 (start) to 0 (end)

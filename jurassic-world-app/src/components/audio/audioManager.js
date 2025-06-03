@@ -3,6 +3,7 @@ import * as THREE from 'three';
 
 let rexSounds;
 let raptorSounds;
+let triceratopsSounds;
 
 let aiRexSound;
 let aiRaptorSound;
@@ -44,6 +45,20 @@ export const initRaptorSounds = (listener, audioLoader) => {
 
 export const getRaptorSounds = () => raptorSounds;
 
+export const initTriceratopsSounds = (listener, audioLoader) => {
+  triceratopsSounds = new THREE.Audio(listener);
+  audioLoader.load('../sounds/triceratops-sounds.mp3', function (buffer) {
+    triceratopsSounds.setBuffer(buffer);
+    triceratopsSounds.setLoop(true);
+    triceratopsSounds.setVolume(0.2);
+    triceratopsSounds.play();
+  });
+};
+
+export const getTriceratopsSounds = () => triceratopsSounds;
+
+// AI voice sounds
+
 export const initAIRex = (listener, audioLoader) => {
   aiRexSound = new THREE.Audio(listener);
   audioLoader.load('../sounds/ai-voice-rex.mp3', function (buffer) {
@@ -53,7 +68,6 @@ export const initAIRex = (listener, audioLoader) => {
   });
 };
 
-// AI voice sounds
 export const getAIRex = () => aiRexSound;
 
 export const initAIRaptor = (listener, audioLoader) => {
@@ -102,6 +116,7 @@ export const getActiveDinoSound = () => {
 export const stopDinoSounds = () => {
     if (rexSounds?.stop) rexSounds.stop();
     if (raptorSounds?.stop) raptorSounds.stop();
+    if (triceratopsSounds?.stop) triceratopsSounds.stop();
 }
 
 export const stopAISounds = () => {
