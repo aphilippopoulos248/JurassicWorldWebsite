@@ -21,6 +21,18 @@ const DINO_COORDINATES = {
     { lat: 42.0, lng: 104.0, name: 'Mongolia – Tugrig locality (Tugrugeen Shireh)' },
     { lat: 40.04, lng: 112.42, name: 'China – Bayan Mandahu Formation, Inner Mongolia (Velociraptor osmolskae)' },
   ],
+  'triceratops': [
+    { lat: 49.7, lng: -108.5, name: 'Canada – Grasslands National Park, Saskatchewan' },
+    { lat: 50.6, lng: -112.4, name: 'Canada – Dinosaur Provincial Park, Alberta' },
+    { lat: 45.5, lng: -104.0, name: 'USA – Powder River Basin, Montana' },
+    { lat: 45.2, lng: -106.3, name: 'USA – Fort Peck Lake area, Montana' },
+    { lat: 44.7, lng: -102.5, name: 'USA – Badlands of South Dakota (Black Hills region)' },
+    { lat: 48.3, lng: -106.5, name: 'USA – Glasgow area, northeastern Montana' },
+    { lat: 47.2, lng: -104.2, name: 'USA – McCone County, Montana' },
+    { lat: 29.3, lng: -103.2, name: 'USA – Big Bend National Park, Texas (Ceratopsid remains)' },
+    { lat: 33.2, lng: -107.2, name: 'USA – Elephant Butte, New Mexico (possible ceratopsid)' },
+    { lat: 37.3, lng: -104.6, name: 'USA – Raton Basin, Colorado (Upper Cretaceous beds)' },
+  ],
   // Add more species here...
 };
 

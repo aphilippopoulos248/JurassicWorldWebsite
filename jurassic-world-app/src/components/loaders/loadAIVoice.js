@@ -1,6 +1,4 @@
-import { loadRex } from '../lab/dinos/rex/rex';
-import { loadRaptor } from '../lab/dinos/raptor/raptor';
-import { initRexSounds, getAIRex, initRaptorSounds, getAIRaptor } from '../audio/audioManager';
+import { getAIRex, getAIRaptor, getAITriceratops } from '../audio/audioManager';
 
 export const loadAIVoice = (dinoName) => {
     let aiSound = null;
@@ -12,6 +10,10 @@ export const loadAIVoice = (dinoName) => {
 
         case 'velociraptor':
             aiSound = getAIRaptor();
+            break;
+            
+        case 'triceratops':
+            aiSound = getAITriceratops();
             break;
 
         default:

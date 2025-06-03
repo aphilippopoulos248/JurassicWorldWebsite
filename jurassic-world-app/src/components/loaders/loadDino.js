@@ -1,7 +1,7 @@
 import { loadRex } from '../lab/dinos/rex/rex';
 import { loadRaptor } from '../lab/dinos/raptor/raptor';
 import { loadTriceratops } from '../lab/dinos/triceratops/triceratops';
-import { initRexSounds, initAIRex, initRaptorSounds, initAIRaptor, initTriceratopsSounds } from '../audio/audioManager';
+import { initRexSounds, initAIRex, initRaptorSounds, initAIRaptor, initTriceratopsSounds, initAITriceratops } from '../audio/audioManager';
 
 export const loadDino = async (dinoName, loader, scene, listener, audioLoader) => {
   switch (dinoName.toLowerCase()) {
@@ -20,7 +20,7 @@ export const loadDino = async (dinoName, loader, scene, listener, audioLoader) =
     case 'triceratops':
         const triceratops = await loadTriceratops(loader, scene);
         initTriceratopsSounds(listener, audioLoader);
-        initAIRaptor(listener, audioLoader);
+        initAITriceratops(listener, audioLoader);
         return triceratops;
 
     default:

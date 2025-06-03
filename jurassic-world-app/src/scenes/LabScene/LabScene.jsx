@@ -81,11 +81,15 @@ function LabScene() {
 
     useEffect(() => {
         if (playVoice) {
-            if (activeDinoSounds) {
+            if (aiSound) {
+                const durationMs = aiSound.buffer?.duration
+                    ? aiSound.buffer.duration * 1000 + 1000
+                    : 32000;
+
                 activeDinoSounds.setVolume(0.01);
                 setTimeout(() => {
                     activeDinoSounds.setVolume(0.2);
-                }, 32000);
+                }, durationMs);
             }
             if (aiSound && !showMap) {
                 setTimeout(() => {
