@@ -173,3 +173,44 @@ nav ul {
     left: 3rem;
   }
 }
+
+@media (max-width: 90rem) {
+  .go-back-button {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.3rem 1rem;
+  }
+
+  .go-back-button img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .ui-container {
+    gap: 1.5rem;
+    top: 17rem;
+    right: 0rem;
+  }
+
+  // .title {
+  //   font-size: 1.5rem;
+  //   text-align: center;
+  // }
+
+  // .title-container {
+  //   text-align: center;
+  // }
+
+  // .ui-button {
+  //   padding: 0.5rem;
+  // }
+
+  // .ui-button img {
+  //   width: 2.5rem;
+  // }
+
+  // .map-wrapper {
+  //   max-width: 90%;
+  //   top: 2rem;
+  // }
+}
