@@ -21,16 +21,17 @@
     font-family: 'Orbitron', sans-serif;
 }
 
-@media(max-width: 48rem){
-    .enter{
-        top: 8rem;
-        padding: 1rem 2rem;
-    }
-}
 
 @media (max-width: 90rem) {
     .enter{
         top: 16rem;
+        padding: 1rem 2rem;
+    }
+}
+
+@media(max-width: 48rem){
+    .enter{
+        top: 12rem;
         padding: 1rem 2rem;
     }
 }
