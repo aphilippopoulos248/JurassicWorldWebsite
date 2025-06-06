@@ -11,12 +11,14 @@
     font-size: 4rem;
     position: relative;
     top: 3rem;
+    color: white;
 }
 
 .menu-container{
     display: flex;
     flex-direction: row;
     font-family: 'Orbitron', sans-serif;
+    color: white;
     gap: 4rem;
     overflow-x: auto;
     white-space: nowrap;

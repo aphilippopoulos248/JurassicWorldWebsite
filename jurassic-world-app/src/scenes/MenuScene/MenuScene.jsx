@@ -57,7 +57,7 @@ const MenuScene = () => {
                         <h3>{dino.no}</h3>
                         <h2>{dino.name}</h2>
                         <div className='services-readmore'>
-                        <button onClick={() => navToPage(`${dino.link}`, dino.name)}>
+                        <button onClick={() => navToPage('/lab', dino.name)}>
                             <p>View Dino</p>
                         </button>
                         </div>

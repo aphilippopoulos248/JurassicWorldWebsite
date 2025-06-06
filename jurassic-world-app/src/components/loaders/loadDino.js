@@ -1,6 +1,7 @@
 import { loadRex } from '../lab/dinos/rex/rex';
 import { loadRaptor } from '../lab/dinos/raptor/raptor';
 import { loadTriceratops } from '../lab/dinos/triceratops/triceratops';
+import { loadSpinosaurus } from '../lab/dinos/spinosaurus/spinosaurus';
 import { initRexSounds, initAIRex, initRaptorSounds, initAIRaptor, initTriceratopsSounds, initAITriceratops } from '../audio/audioManager';
 
 export const loadDino = async (dinoName, loader, scene, listener, audioLoader) => {
@@ -22,6 +23,10 @@ export const loadDino = async (dinoName, loader, scene, listener, audioLoader) =
         initTriceratopsSounds(listener, audioLoader);
         initAITriceratops(listener, audioLoader);
         return triceratops;
+
+    case 'spinosaurus':
+        const spinosaurus = await loadSpinosaurus(loader, scene);
+        return spinosaurus;
 
     default:
       console.warn(`No loader defined for: ${dinoName}`);
