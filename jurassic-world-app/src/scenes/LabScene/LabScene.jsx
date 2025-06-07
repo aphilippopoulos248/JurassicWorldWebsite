@@ -25,9 +25,10 @@ function LabScene() {
     const activeDinoSounds = getActiveDinoSound();
     const phoneSound = getPhoneSound();
     const [fossilSites, setFossilSites] = useState([]);
+    const [aiPlaying, setAiPlaying] = useState(false);
+
 
     const phoneSoundRef = useRef(getPhoneSound());
-    const [aiPlaying, setAiPlaying] = useState(false);
 
     // Retrieving dino name from menu scene
     const location = useLocation();
@@ -57,6 +58,7 @@ function LabScene() {
         navigate('/menu');
     };
 
+    // animate ui
     useEffect(() => {
     // Timeline for animations
         const tl = gsap.timeline({ defaults: { duration: 1 } });
@@ -66,6 +68,8 @@ function LabScene() {
         tl.fromTo('.title', { opacity: 0 }, { opacity: 1, delay: 0.5 });
     }, [])
 
+    // animate map opening
+    // dim dino sounds if map is open
     useEffect(() => {
         if (!activeDinoSounds) {return};
         if (!phoneSound) {return};
@@ -90,6 +94,7 @@ function LabScene() {
         }
     }, [showMap]);
 
+    // dim dino sounds and mute phone sound if ai voice is playing
     useEffect(() => {
         if (!activeDinoSounds) {return}
 
@@ -115,6 +120,7 @@ function LabScene() {
         }
     }, [playVoice]);
 
+    // play phone sound if dinosaur is spinosaurus
     useEffect(() => {
         if (dinoName.toLowerCase() !== 'spinosaurus') {return};
 
@@ -145,6 +151,7 @@ function LabScene() {
         };
     }, [dinoName, aiPlaying]);
 
+    // dim phone sound if map is open
     useEffect(() => {
         if (!aiSound) {return};
         if (aiSound) {
