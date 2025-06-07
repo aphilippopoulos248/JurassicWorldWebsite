@@ -4,10 +4,12 @@ import * as THREE from 'three';
 let rexSounds;
 let raptorSounds;
 let triceratopsSounds;
+let spinosaurusSounds;
 
 let aiRexSound;
 let aiRaptorSound;
 let aiTriceratopsSound;
+let aiSpinosaurusSound;
 
 let aiIntroSound;
 let bgm;
@@ -49,10 +51,20 @@ export const initTriceratopsSounds = (listener, audioLoader) => {
     triceratopsSounds.play();
   });
 };
+export const initSpinosaurusSounds = (listener, audioLoader) => {
+  spinosaurusSounds = new THREE.Audio(listener);
+  audioLoader.load('../sounds/spino-sounds.mp3', function (buffer) {
+    spinosaurusSounds.setBuffer(buffer);
+    spinosaurusSounds.setLoop(true);
+    spinosaurusSounds.setVolume(0.3);
+    spinosaurusSounds.play();
+  });
+};
 
 export const getRexSounds = () => rexSounds;
 export const getRaptorSounds = () => raptorSounds;
 export const getTriceratopsSounds = () => triceratopsSounds;
+export const getSpinosaurusSounds = () => spinosaurusSounds;
 
 // AI voice sounds
 export const initAIIntro = () => {
@@ -88,11 +100,20 @@ export const initAITriceratops = (listener, audioLoader) => {
     aiTriceratopsSound.setVolume(.5);
   });
 };
+export const initAISpinosaurus = (listener, audioLoader) => {
+  aiSpinosaurusSound = new THREE.Audio(listener);
+  audioLoader.load('../sounds/ai-voice-spino.mp3', function (buffer) {
+    aiSpinosaurusSound.setBuffer(buffer);
+    aiSpinosaurusSound.setLoop(false);
+    aiSpinosaurusSound.setVolume(.5);
+  });
+};
 
 export const getAIIntro = () => aiIntroSound;
 export const getAIRex = () => aiRexSound;
 export const getAIRaptor = () => aiRaptorSound;
 export const getAITriceratops = () => aiTriceratopsSound;
+export const getAISpinosaurus = () => aiSpinosaurusSound;
 
 // Background Music
 export const initBGM = () => {
@@ -111,6 +132,7 @@ export const getActiveDinoSound = () => {
   if (rexSounds?.isPlaying) return rexSounds;
   if (raptorSounds?.isPlaying) return raptorSounds;
   if (triceratopsSounds?.isPlaying) return triceratopsSounds;
+  if (spinosaurusSounds?.isPlaying) return spinosaurusSounds;
   return null;
 };
 
@@ -118,10 +140,12 @@ export const stopDinoSounds = () => {
     if (rexSounds?.stop) rexSounds.stop();
     if (raptorSounds?.stop) raptorSounds.stop();
     if (triceratopsSounds?.stop) triceratopsSounds.stop();
+    if (spinosaurusSounds?.stop) spinosaurusSounds.stop();
 }
 
 export const stopAISounds = () => {
     if (aiRexSound?.stop) aiRexSound.stop();
     if (aiRaptorSound?.stop) aiRaptorSound.stop();
     if (aiTriceratopsSound?.stop) aiTriceratopsSound.stop();
+    if (aiSpinosaurusSound?.stop) aiSpinosaurusSound.stop();
 }

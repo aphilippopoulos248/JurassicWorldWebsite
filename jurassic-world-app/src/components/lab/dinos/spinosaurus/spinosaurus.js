@@ -6,7 +6,7 @@ export function loadSpinosaurus(loader, scene, objToRender = 'spinosaurus') {
         `./models/${objToRender}/scene.gltf`,
         function (gltf) {
             const object = gltf.scene;
-            const dimension = 1;
+            const dimension = 1.1;
             object.scale.set(dimension, dimension, dimension);
             object.position.set(0, -3, 0);
             scene.add(object);

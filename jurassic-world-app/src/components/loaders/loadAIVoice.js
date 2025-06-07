@@ -1,4 +1,4 @@
-import { getAIRex, getAIRaptor, getAITriceratops } from '../audio/audioManager';
+import { getAIRex, getAIRaptor, getAITriceratops, getAISpinosaurus } from '../audio/audioManager';
 
 export const loadAIVoice = (dinoName) => {
     let aiSound = null;
@@ -14,6 +14,10 @@ export const loadAIVoice = (dinoName) => {
             
         case 'triceratops':
             aiSound = getAITriceratops();
+            break;
+
+        case 'spinosaurus':
+            aiSound = getAISpinosaurus();
             break;
 
         default:

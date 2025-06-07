@@ -33,7 +33,17 @@ const DINO_COORDINATES = {
     { lat: 33.2, lng: -107.2, name: 'USA – Elephant Butte, New Mexico (possible ceratopsid)' },
     { lat: 37.3, lng: -104.6, name: 'USA – Raton Basin, Colorado (Upper Cretaceous beds)' },
   ],
-  // Add more species here...
+  'spinosaurus': [
+    { lat: 29.2089, lng: 30.4921, name: 'Egypt – Bahariya Oasis, Western Desert (original Stromer discovery site)' },
+    { lat: 28.7226, lng: 29.2707, name: 'Egypt – Gebel El Dist, Bahariya Depression (spinosaurid remains)' },
+    { lat: 28.5535, lng: 30.5872, name: 'Egypt – Qaret Had El Rumi, Western Desert (Bahariya Formation)' },
+    { lat: 30.8380, lng: -3.9141, name: 'Morocco – Kem Kem Beds, near Taouz (major Spinosaurus finds)' },
+    { lat: 31.1146, lng: -4.0186, name: 'Morocco – Erfoud area, Tafilalt region (Kem Kem Group)' },
+    { lat: 31.7516, lng: -3.9794, name: 'Morocco – Near Zrigat, Kem Kem (spinosaurid material)' },
+    { lat: 28.2685, lng: 1.8289, name: 'Algeria – Béchar Basin (In Guezzam region spinosaurid remains)' },
+    { lat: 31.1851, lng: 2.1984, name: 'Algeria – Boudjema, Béchar Province (continental red beds, possible Kem Kem equivalent)' },
+    { lat: 29.4513, lng: 1.3725, name: 'Algeria – Abadla Basin, Western Algeria (possible spinosaurid remains)' }
+  ],
 };
 
 export const dinoCoords = async (dinoName) => {

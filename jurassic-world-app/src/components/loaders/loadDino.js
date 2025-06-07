@@ -3,7 +3,11 @@ import { loadRaptor } from '../lab/dinos/raptor/raptor';
 import { loadTriceratops } from '../lab/dinos/triceratops/triceratops';
 import { loadSpinosaurus } from '../lab/dinos/spinosaurus/spinosaurus';
 import { loadIndominus } from '../lab/dinos/indominus/indominus';
-import { initRexSounds, initAIRex, initRaptorSounds, initAIRaptor, initTriceratopsSounds, initAITriceratops } from '../audio/audioManager';
+import { 
+  initRexSounds, initAIRex, 
+  initRaptorSounds, initAIRaptor, 
+  initTriceratopsSounds, initAITriceratops,
+  initSpinosaurusSounds, initAISpinosaurus } from '../audio/audioManager';
 
 export const loadDino = async (dinoName, loader, scene, listener, audioLoader) => {
   switch (dinoName.toLowerCase()) {
@@ -27,6 +31,8 @@ export const loadDino = async (dinoName, loader, scene, listener, audioLoader) =
 
     case 'spinosaurus':
         const spinosaurus = await loadSpinosaurus(loader, scene);
+        initSpinosaurusSounds(listener, audioLoader);
+        initAISpinosaurus(listener, audioLoader);
         return spinosaurus;
 
     case 'indominus rex':
