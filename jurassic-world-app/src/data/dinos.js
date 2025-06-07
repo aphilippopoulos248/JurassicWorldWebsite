@@ -18,6 +18,10 @@ const Dinos_Data = [
         no:"04",
         name:"Spinosaurus",
     },
+        {
+        no:"05",
+        name:"Indominus Rex",
+    },
 ]
  
 export default Dinos_Data;
