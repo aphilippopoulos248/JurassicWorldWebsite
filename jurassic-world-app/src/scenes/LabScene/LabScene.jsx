@@ -10,6 +10,7 @@ import {
     stopDinoSounds,
     stopAISounds,
     getActiveDinoSound,
+    getPhoneSound
     } from '../../components/audio/audioManager';
 import { loadAIVoice } from '../../components/loaders/loadAIVoice'
 import Dinos_Data from '../../data/dinos'
@@ -22,6 +23,7 @@ function LabScene() {
     const [playVoice, setPlayVoice] = useState(false);
     const mapRef = useRef(null);
     const activeDinoSounds = getActiveDinoSound();
+    const phoneSound = getPhoneSound();
     const [fossilSites, setFossilSites] = useState([]);
 
     // Retrieving dino name from menu scene
@@ -63,6 +65,7 @@ function LabScene() {
 
     useEffect(() => {
         if (!activeDinoSounds) {return};
+        if (!phoneSound) {return};
         // if (!mapRef.current) {return};
         if (showMap) {
             console.log('showing map')
@@ -85,6 +88,7 @@ function LabScene() {
     }, [showMap]);
 
     useEffect(() => {
+        if (!activeDinoSounds) {return}
         if (playVoice) {
             if (aiSound) {
                 const durationMs = aiSound.buffer?.duration
@@ -104,6 +108,34 @@ function LabScene() {
             }
         }
     }, [playVoice]);
+
+    useEffect(() => {
+        if (dinoName.toLowerCase() !== 'spinosaurus') {return};
+        let intervalId;
+        let timeoutId;
+
+        const playPhoneSound = () => {
+            if (phoneSound && phoneSound.buffer) {
+                if (!phoneSound.isPlaying) {
+                    phoneSound.play();
+                    phoneSound.setVolume(0.1);
+                }
+            }
+        };
+
+        timeoutId = setTimeout(() => {
+            playPhoneSound();
+            intervalId = setInterval(playPhoneSound, 20000);
+        }, 10000);
+
+        return () => {
+            clearTimeout(timeoutId);
+            clearInterval(intervalId);
+            if (phoneSound && phoneSound.isPlaying) {
+                phoneSound.stop();
+            }
+        };
+    }, [dinoName]);
 
     useEffect(() => {
         return () => {

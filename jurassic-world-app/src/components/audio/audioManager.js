@@ -13,6 +13,8 @@ let aiSpinosaurusSound;
 
 let aiIntroSound;
 let bgm;
+let phoneSound;
+
 let listener = null;
 let audioLoader = null;
 
@@ -127,6 +129,17 @@ export const initBGM = () => {
 };
 
 export const getBGM = () => bgm;
+
+export const initPhoneSound = () => {
+  phoneSound = new THREE.Audio(listener);
+  audioLoader.load('../sounds/phone-ringtone.mp3', function (buffer) {
+    phoneSound.setBuffer(buffer);
+    phoneSound.setLoop(false);
+    phoneSound.setVolume(0.3);
+  });
+};
+
+export const getPhoneSound = () => phoneSound;
 
 export const getActiveDinoSound = () => {
   if (rexSounds?.isPlaying) return rexSounds;
