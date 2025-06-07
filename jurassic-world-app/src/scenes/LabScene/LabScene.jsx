@@ -26,6 +26,9 @@ function LabScene() {
     const phoneSound = getPhoneSound();
     const [fossilSites, setFossilSites] = useState([]);
 
+    const phoneSoundRef = useRef(getPhoneSound());
+    const [aiPlaying, setAiPlaying] = useState(false);
+
     // Retrieving dino name from menu scene
     const location = useLocation();
     const dinoName = location.state?.dinoName || "Unknown Dino";
@@ -89,6 +92,7 @@ function LabScene() {
 
     useEffect(() => {
         if (!activeDinoSounds) {return}
+
         if (playVoice) {
             if (aiSound) {
                 const durationMs = aiSound.buffer?.duration
@@ -98,11 +102,13 @@ function LabScene() {
                 activeDinoSounds.setVolume(0.01);
                 setTimeout(() => {
                     activeDinoSounds.setVolume(0.2);
+                    setAiPlaying(false);
                 }, durationMs);
             }
             if (aiSound && !showMap) {
                 setTimeout(() => {
                     aiSound.play();
+                    setAiPlaying(true);
                     console.log('play ai voice');
                 }, 500);
             }
@@ -111,12 +117,14 @@ function LabScene() {
 
     useEffect(() => {
         if (dinoName.toLowerCase() !== 'spinosaurus') {return};
+
+        const phoneSound = phoneSoundRef.current;
         let intervalId;
         let timeoutId;
 
         const playPhoneSound = () => {
             if (phoneSound && phoneSound.buffer) {
-                if (!phoneSound.isPlaying) {
+                if (!aiPlaying) {
                     phoneSound.play();
                     phoneSound.setVolume(0.1);
                 }
@@ -135,14 +143,30 @@ function LabScene() {
                 phoneSound.stop();
             }
         };
-    }, [dinoName]);
+    }, [dinoName, aiPlaying]);
+
+    useEffect(() => {
+        if (!aiSound) {return};
+        if (aiSound) {
+            console.log('ai sound!')
+        }
+        const phoneSound = phoneSoundRef.current;
+        if (!phoneSound || !phoneSound.isPlaying) return;
+
+        if (showMap) {
+            phoneSound.setVolume(0.01);
+        }
+        else {
+            phoneSound.setVolume(0.1);
+        }
+    }, [showMap]);
 
     useEffect(() => {
         return () => {
             console.log('exiting site');
             stopDinoSounds();
             stopAISounds();
-            }
+        }
     }, []);
 
     return (

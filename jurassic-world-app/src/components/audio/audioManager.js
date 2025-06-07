@@ -135,7 +135,7 @@ export const initPhoneSound = () => {
   audioLoader.load('../sounds/phone-ringtone.mp3', function (buffer) {
     phoneSound.setBuffer(buffer);
     phoneSound.setLoop(false);
-    phoneSound.setVolume(0.3);
+    phoneSound.setVolume(0.1);
   });
 };
 
