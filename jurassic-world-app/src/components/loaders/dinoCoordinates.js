@@ -44,6 +44,9 @@ const DINO_COORDINATES = {
     { lat: 31.1851, lng: 2.1984, name: 'Algeria – Boudjema, Béchar Province (continental red beds, possible Kem Kem equivalent)' },
     { lat: 29.4513, lng: 1.3725, name: 'Algeria – Abadla Basin, Western Algeria (possible spinosaurid remains)' }
   ],
+  'indominus rex': [
+    
+  ],
 };
 
 export const dinoCoords = async (dinoName) => {

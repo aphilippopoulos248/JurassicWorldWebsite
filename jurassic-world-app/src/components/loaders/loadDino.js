@@ -7,7 +7,8 @@ import {
   initRexSounds, initAIRex, 
   initRaptorSounds, initAIRaptor, 
   initTriceratopsSounds, initAITriceratops,
-  initSpinosaurusSounds, initAISpinosaurus, initPhoneSound } from '../audio/audioManager';
+  initSpinosaurusSounds, initAISpinosaurus, initPhoneSound,
+  initIndominusSounds, initAIIndominus } from '../audio/audioManager';
 
 export const loadDino = async (dinoName, loader, scene, listener, audioLoader) => {
   switch (dinoName.toLowerCase()) {
@@ -38,6 +39,8 @@ export const loadDino = async (dinoName, loader, scene, listener, audioLoader) =
 
     case 'indominus rex':
         const indominus = await loadIndominus(loader, scene);
+        initIndominusSounds(listener, audioLoader);
+        initAIIndominus(listener, audioLoader);
         return indominus;
 
     default:

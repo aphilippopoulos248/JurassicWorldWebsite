@@ -1,4 +1,4 @@
-import { getAIRex, getAIRaptor, getAITriceratops, getAISpinosaurus } from '../audio/audioManager';
+import { getAIRex, getAIRaptor, getAITriceratops, getAISpinosaurus, getAIIndominus } from '../audio/audioManager';
 
 export const loadAIVoice = (dinoName) => {
     let aiSound = null;
@@ -20,6 +20,9 @@ export const loadAIVoice = (dinoName) => {
             aiSound = getAISpinosaurus();
             break;
 
+        case 'indominus rex':
+            aiSound = getAIIndominus();
+            break;
         default:
         console.warn(`No ai voice defined for: ${dinoName}`);
         return null;

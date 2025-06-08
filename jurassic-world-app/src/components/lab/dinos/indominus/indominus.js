@@ -12,8 +12,8 @@ export function loadIndominus(loader, scene, objToRender = 'indominus') {
 
                 let mixer = null;
                 let timeout = null;
-                const ACTION1_TIMEOUT = 1.1;
-                const ACTION2_TIMEOUT = 2.1;
+                const ACTION1_TIMEOUT = 1.05;
+                const ACTION2_TIMEOUT = 2.0;
 
                 if (gltf.animations && gltf.animations.length) {
                     mixer = new THREE.AnimationMixer(object);
