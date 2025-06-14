@@ -1,6 +1,7 @@
 # Jurassic World Hub
 
 The Jurassic World Hub is a 3D interactive website showcasing the dinosaurs of the Jurassic franchise. If you are a fan of the Jurassic Park/World movies, this is the perfect site for you to visit. When you enter the site, you are brought to a menu with every single dinosaur specimen available for speculation. When in the lab, you have the option to listen to an audio recording about the dinosaur, and an option to view the dinosaur fossil records on an interactive map. I hope you enjoy looking at the beautiful assets of Jurassic World.
+
 Link to the website: https://jurassicworldhub.com/
 
 <img width="1280" alt="jw-opening" src="https://github.com/user-attachments/assets/47dadaa4-eb99-4beb-8bf0-4c3a430508a4" />
